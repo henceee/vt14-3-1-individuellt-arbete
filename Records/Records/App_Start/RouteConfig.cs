@@ -10,7 +10,9 @@ namespace Records
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.EnableFriendlyUrls();
+            routes.MapPageRoute("Records",      "skivor",        "~/Pages/RecordPages/List.aspx");
+            routes.MapPageRoute("RecordDetails", "skivor/{id}",     "~/Pages/RecordPages/Details.aspx");
+            routes.MapPageRoute("RecordDelete", "skivor/{id}/tabort", "~/Pages/RecordPages/Delete.aspx");
         }
     }
 }

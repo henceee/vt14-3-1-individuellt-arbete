@@ -30,13 +30,13 @@
 
             <dt>
                         
-                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#: "~/Pages/RecordPages/Details.aspx?id="+ Item.RecordID %>' Text='<%#: Item.Title %>'/>
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#: GetRouteUrl("RecordDetails", new {id =Item.RecordID }) %>' Text='<%#: Item.Title %>'/>
             </dt>
             <dd>
                 <b>Artist:</b>
             </dd>
             <dd>
-                <%#: Item.Title %>
+                <%#: Item.Artist %>
               
             </dd>
             <dd>

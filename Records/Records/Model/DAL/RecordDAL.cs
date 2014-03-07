@@ -70,12 +70,12 @@ namespace Records.Model.DAL
                     using (var reader = cmd.ExecuteReader())
                     {
 
-                        var RecordID = reader.GetOrdinal("SkivID");
-                        var Title = reader.GetOrdinal("Skivtitel");
-                        var Artist = reader.GetOrdinal("Artist");
-                        var Playtime = reader.GetOrdinal("Speltid");
-                        var Releasedate = reader.GetOrdinal("Releasedatum");
-                        var Recordlabel = reader.GetOrdinal("Skivbolag");
+                        var RecordIDIndex = reader.GetOrdinal("SkivID");
+                        var TitleIndex = reader.GetOrdinal("Skivtitel");
+                        var ArtistIndex = reader.GetOrdinal("Artist");
+                        var PlaytimeIndex = reader.GetOrdinal("Speltid");
+                        var ReleasedateIndex = reader.GetOrdinal("Releasedatum");
+                        var RecordlabelIndex = reader.GetOrdinal("Skivbolag");
 
                         while (reader.Read())
                         {
@@ -83,12 +83,12 @@ namespace Records.Model.DAL
                             records.Add(new Record
                             {
 
-                                RecordID = reader.GetInt32(RecordID),
-                                Title = reader.GetString(Title),
-                                Artist = reader.GetString(Artist),
-                                Playtime = reader.GetString(Playtime),
-                                Releasedate = reader.GetDateTime(Releasedate),
-                                Recordlabel = reader.GetString(Recordlabel)
+                                RecordID = reader.GetInt32(RecordIDIndex),
+                                Title = reader.GetString(TitleIndex),
+                                Artist = reader.GetString(ArtistIndex),
+                                Playtime = reader.GetString(PlaytimeIndex),
+                                Releasedate = reader.GetDateTime(ReleasedateIndex),
+                                Recordlabel = reader.GetString(RecordlabelIndex)
 
 
                             });
@@ -125,31 +125,57 @@ namespace Records.Model.DAL
 
         public Record GetRecordByID(int RecordID)
         {
-            throw new NotImplementedException();
+            
 
-            //using (var conn = CreateConnection())
-            //{
+            using (var conn = CreateConnection())
+            {
 
-            //    try
-            //    {
-            //        //TODO: IMPLEMENTERA RECORDDAL - GetRecordsByID()
+                try
+                {
 
-            /*using (sqlDataReader reader = cmd.ExecuteReader()){
+                    SqlCommand cmd = new SqlCommand("appschema.usp_GetRecordByID", conn);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@RecordID", RecordID);
+
+                    conn.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader()){
+
+                        if (reader.Read()) {
+
+                            var RecordIDIndex = reader.GetOrdinal("SkivID");
+                            var TitleIndex = reader.GetOrdinal("Skivtitel");
+                            var ArtistIndex = reader.GetOrdinal("Artist");
+                            var PlaytimeIndex = reader.GetOrdinal("Speltid");
+                            var ReleasedateIndex = reader.GetOrdinal("Releasedatum");
+                            var RecordlabelIndex = reader.GetOrdinal("Skivbolag");
+
+                            return new Record {
+
+                                RecordID = reader.GetInt32(RecordIDIndex),
+                                Title = reader.GetString(TitleIndex),
+                                Artist = reader.GetString(ArtistIndex),
+                                Playtime = reader.GetString(PlaytimeIndex),
+                                Releasedate = reader.GetDateTime(ReleasedateIndex),
+                                Recordlabel = reader.GetString(RecordlabelIndex)
+                            };
+
+                        }     
                         
-                     ...
-                        
-             }
-             */
-            //return null;
+                     }
+                     
+                    return null;
 
-            //    }
-            //    catch
-            //    {
+                }
+                catch
+                {
 
 
-            //        throw new ApplicationException("An error occured while getting customers from the database.");
-            //    }
-            //}
+                    throw new ApplicationException("An error occured while getting customers from the database.");
+                }
+            }
 
         }
 

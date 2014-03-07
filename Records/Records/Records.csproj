@@ -140,6 +140,7 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\RecordPages\Delete.aspx" />
     <Content Include="Pages\RecordPages\Details.aspx" />
     <Content Include="Pages\RecordPages\List.aspx" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
@@ -187,6 +188,13 @@
     <Compile Include="Model\DAL\RecordDAL.cs" />
     <Compile Include="Model\DAL\Service.cs" />
     <Compile Include="Model\Record.cs" />
+    <Compile Include="Pages\RecordPages\Delete.aspx.cs">
+      <DependentUpon>Delete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RecordPages\Delete.aspx.designer.cs">
+      <DependentUpon>Delete.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RecordPages\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

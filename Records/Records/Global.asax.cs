@@ -17,6 +17,7 @@ namespace Records
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterOpenAuth();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
         }
 
         void Application_End(object sender, EventArgs e)
