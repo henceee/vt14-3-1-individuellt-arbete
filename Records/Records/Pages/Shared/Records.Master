@@ -1,0 +1,36 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Records.master.cs" Inherits="Records.Pages.Shared.Records" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title></title>
+    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <header>
+                    <%--HUVUD--%>
+            <nav>
+                    <%--MENY--%>
+            </nav>
+        
+        </header>
+
+        <main role="main">
+
+                    <%--SIDINNEHÅLL--%>
+
+                <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
+                </asp:ContentPlaceHolder>
+        </main>
+        
+       <footer>
+                    <%--SIDFOT--%>
+       </footer>
+    </div>
+    </form>
+</body>
+</html>
