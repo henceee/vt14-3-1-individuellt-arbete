@@ -19,12 +19,18 @@ namespace RecordCollection.Pages.RecordPages
 
         }
 
-        // The return type can be changed to IEnumerable, however to support
-        // paging and sorting, the following parameters must be added:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
+       
+
+        /// <summary>
+        /// GetData till List.aspx
+        /// Försöker skapa ett nytts service objekt, kallar på GetRecords() i Service-klassen
+        /// för att hämta ut alla skivor i databasen.
+        /// </summary>
+        /// <returns></returns>
+
+        #region GetData
+        
+
         public IEnumerable<Record> ListView1_GetData()
         {
             try
@@ -38,6 +44,9 @@ namespace RecordCollection.Pages.RecordPages
                 return null;
             }
         }
+
+        #endregion
+
     }
 }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 
 namespace RecordCollection.Model.DAL
 {
@@ -11,19 +12,18 @@ namespace RecordCollection.Model.DAL
 
         private static string _connectionstring;
 
-        static DALBase() { 
-        
-            //TODO: IMPLEMENTERA DALBASE-KONSTRUKTORN, TILLDELA FÄLTET _connectionstring
-            //TODO: SKAPA EN CONNECTIONSTRING!!!!!!!!!!!!!
+        static DALBase() {
+
+            _connectionstring = WebConfigurationManager.ConnectionStrings["RecordCollectionConnectionString"].ConnectionString;
+           
+            
         }
 
         #region CreateConnection
 
         protected SqlConnection CreateConnection() {
 
-            //TODO: IMPLEMENTERA DALBASE - CreateConnection()
-
-            throw new NotImplementedException();
+            return new SqlConnection(_connectionstring);
         }
 
         #endregion

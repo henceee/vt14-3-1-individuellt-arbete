@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\RecordPages\Details.aspx" />
     <Content Include="Pages\RecordPages\List.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -65,6 +66,13 @@
     <Compile Include="Model\DAL\RecordDAL.cs" />
     <Compile Include="Model\DAL\Service.cs" />
     <Compile Include="Model\Record.cs" />
+    <Compile Include="Pages\RecordPages\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RecordPages\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RecordPages\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

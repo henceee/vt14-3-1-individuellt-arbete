@@ -7,7 +7,7 @@
                  <%--INNEHÅLL--%>
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 
-
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
 
 <asp:ListView ID="ListView1" runat="server"
     ItemType="RecordCollection.Model.Record"
@@ -17,24 +17,6 @@
     <%--Mall för layouten--%>
     <LayoutTemplate>
 
-        <table>
-        <tr>
-            <th>
-                Titel
-            </th>
-            <th>
-                Artist
-            </th>
-            <th>
-                Speltid
-            </th>            
-            <th>
-                Releasedatum
-            </th>
-            <th>
-                Skivbolag
-            </th>
-        </tr>
 
         <%--Platshållare för skivor--%>
         <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
@@ -43,25 +25,46 @@
 
     </LayoutTemplate>
 
-    <ItemTemplate>
+    <ItemTemplate>       
        
-           <tr>
-               <td>
-                   <asp:Label ID="TitleLabel" runat="server" Text="<%#: Item.Title %>"></asp:Label>
-               </td>
-               <td>
-                   <asp:Label ID="ArtistLabel" runat="server" Text="<%#: Item.Artist %>"></asp:Label>
-               </td>
-               <td>
-                   <asp:Label ID="PlaytimeLabel" runat="server" Text="<%#: Item.Playtime %>"></asp:Label>
-               </td>
-               <td>
-                   <asp:Label ID="ReleaseDateLabel" runat="server" Text="<%#: Item.Releasedate %>"></asp:Label>
-               </td>
-               <td>
-                   <asp:Label ID="RecordlabelLabel" runat="server" Text="<%#: Item.Recordlabel %>"></asp:Label>
-               </td>
-           </tr>      
+        <dl class="Recordinfo">
+
+            <dt>
+                        
+                <asp:HyperLink runat="server" NavigateUrl='<%#: "~/Pages/RecordPages/Details.aspx?id="+ Item.RecordID %>' Text='<%#: Item.Title %>'/>
+            </dt>
+            <dd>
+                <b>Artist:</b>
+            </dd>
+            <dd>
+                <%#: Item.Artist %>
+              
+            </dd>
+            <dd>
+               <b>Speltid:</b> 
+            </dd>
+            <dd>
+                <%#: Item.Playtime %>
+                 
+            </dd>
+            <dd>
+               <b>Releasedatum:</b> 
+            </dd>
+             <dd>
+                 <%#: Item.Releasedate.ToShortDateString() %>
+                 
+            </dd>
+            <dd>
+                <b>Skivbolag:</b>
+            </dd>
+             <dd>
+                 <%#: Item.Recordlabel %>
+                 
+            </dd>
+            
+
+        </dl>
+          
 
     </ItemTemplate>
 
