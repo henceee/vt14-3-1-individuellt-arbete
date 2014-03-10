@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using Records.Model.DAL;
 
 namespace Records.Model.DAL
 {
@@ -21,22 +22,29 @@ namespace Records.Model.DAL
 
         public void DeleteRecord(int RecordID)
         {
-            throw new NotImplementedException();
+            
 
-            ////using (var conn = CreateConnection()) {
+            using (var conn = CreateConnection())
+            {
 
-            ////    try
-            ////    {
-            ////        //TODO: IMPLEMENTERA RECORDDAL - DeleteRecord()
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("appschema.usp_DeleteRecord",conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@RecordID", SqlDbType.Int, 4).Value = RecordID;
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
 
 
-            ////    }
-            ////    catch {
+                }
+                catch
+                {
 
 
-            ////        throw new ApplicationException("An error occured while getting customers from the database.");
-            ////    }
-            //}
+                    throw new ApplicationException("An error occured while getting customers from the database.");
+                }
+            }
 
         }
 
@@ -76,6 +84,7 @@ namespace Records.Model.DAL
                         var PlaytimeIndex = reader.GetOrdinal("Speltid");
                         var ReleasedateIndex = reader.GetOrdinal("Releasedatum");
                         var RecordlabelIndex = reader.GetOrdinal("Skivbolag");
+                        var RecordtypeIndex = reader.GetOrdinal("SkivtypID");
 
                         while (reader.Read())
                         {
@@ -88,7 +97,8 @@ namespace Records.Model.DAL
                                 Artist = reader.GetString(ArtistIndex),
                                 Playtime = reader.GetString(PlaytimeIndex),
                                 Releasedate = reader.GetDateTime(ReleasedateIndex),
-                                Recordlabel = reader.GetString(RecordlabelIndex)
+                                Recordlabel = reader.GetString(RecordlabelIndex),
+                                RecordTypeID = reader.GetInt32(RecordtypeIndex)
 
 
                             });
@@ -126,7 +136,6 @@ namespace Records.Model.DAL
         public Record GetRecordByID(int RecordID)
         {
             
-
             using (var conn = CreateConnection())
             {
 
@@ -151,6 +160,7 @@ namespace Records.Model.DAL
                             var PlaytimeIndex = reader.GetOrdinal("Speltid");
                             var ReleasedateIndex = reader.GetOrdinal("Releasedatum");
                             var RecordlabelIndex = reader.GetOrdinal("Skivbolag");
+                            var RecordtypeIndex = reader.GetOrdinal("SkivtypID");
 
                             return new Record {
 
@@ -159,7 +169,8 @@ namespace Records.Model.DAL
                                 Artist = reader.GetString(ArtistIndex),
                                 Playtime = reader.GetString(PlaytimeIndex),
                                 Releasedate = reader.GetDateTime(ReleasedateIndex),
-                                Recordlabel = reader.GetString(RecordlabelIndex)
+                                Recordlabel = reader.GetString(RecordlabelIndex),
+                                RecordTypeID = reader.GetInt32(RecordtypeIndex)
                             };
 
                         }     
@@ -181,73 +192,12 @@ namespace Records.Model.DAL
 
         #endregion
 
-        /// <summary>
-        /// InsertRecord
-        /// Skapar en ny post i tabellen Skiva.
-        /// </summary>
-        /// <param name="record"></param>
+       
 
-        #region InsertRecord
+     
 
-        public void InsertRecord(Record record)
-        {
-            throw new NotImplementedException();
-
-            //using (var conn = CreateConnection())
-            //{
-
-            //    try
-            //    {
-            //        //TODO: IMPLEMENTERA RECORDDAL - InsertRecord()
-
-
-            //    }
-            //    catch
-            //    {
-
-
-            //        throw new ApplicationException("An error occured while getting customers from the database.");
-            //    }
-            //}
-
-        }
-
-        #endregion
-
-        /// <summary>
-        /// UpdateRecord
-        /// Uppdaterar information om en skiva i tabllen Skiva,
-        /// med hjälp av dess skivID (RecordID, återfinns i egenskapen
-        /// RecordID i referensen till Record-objektet)
-        /// </summary>
-        /// <param name="record"></param>
-
-        #region UpdateRecord
-
-        public void UpdateRecord(Record record)
-        {
-            throw new NotImplementedException();
-
-            //using (var conn = CreateConnection())
-            //{
-
-            //    try
-            //    {
-            //        //TODO: IMPLEMENTERA RECORDDAL - UpdateRecord()
-
-
-            //    }
-            //    catch
-            //    {
-
-
-            //        throw new ApplicationException();
-            //    }
-            //}
-
-        }
-
-        #endregion
+        
+      
 
     }
 }

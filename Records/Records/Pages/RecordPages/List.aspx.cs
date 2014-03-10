@@ -11,9 +11,27 @@ namespace Records.Pages.RecordPages
 {
     public partial class List : System.Web.UI.Page
     {
+
+        #region Egenskaper
+
+        private string Message
+        {
+            get { return Session["SucessMessage"] as string; }
+        }
+        
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["SucessMessage"] != null) {
 
+                UppdateMessage.Text = string.Format(UppdateMessage.Text, Message);
+
+                UppdateMessagePanel.Visible = true;
+                Session.Remove("SucessMessage");
+            }
+
+           
         }
 
 

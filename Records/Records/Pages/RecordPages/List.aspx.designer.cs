@@ -22,6 +22,24 @@ namespace Records.Pages.RecordPages {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
+        /// UppdateMessagePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel UppdateMessagePanel;
+        
+        /// <summary>
+        /// UppdateMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal UppdateMessage;
+        
+        /// <summary>
         /// ListView1 control.
         /// </summary>
         /// <remarks>

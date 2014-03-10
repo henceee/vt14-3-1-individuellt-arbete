@@ -45,7 +45,14 @@
                  <%#: Item.Recordlabel %>
                  
             </dd>
-          <%--  <asp:HyperLink ID="DeleteHyperLink" NavigateURL='<%#: GetRouteUrl("RecordDelete", new {id = Item.RecordID} %>' runat="server">Ta bort</asp:HyperLink>--%>
+
+            <dd>
+                <asp:HyperLink ID="DeleteHyperLink" runat="server" NavigateUrl='<%#: GetRouteUrl("RecordDelete", new {id =Item.RecordID }) %>' Text="Ta bort"/>
+           
+                <asp:HyperLink ID="ReturnHyperLink" runat="server" NavigateUrl='<%#: GetRouteUrl("Records", null) %>' Text="Tillbaka"/>
+            </dd>
+                 
+                 
         </ItemTemplate>
 
     </asp:FormView>

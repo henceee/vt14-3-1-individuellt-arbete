@@ -185,6 +185,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\DAL\DALBase.cs" />
+    <Compile Include="Model\DigitalRecord.cs" />
+    <Compile Include="Model\DAL\DigitalRecordDAL.cs" />
+    <Compile Include="Model\PhysicalRecord.cs" />
+    <Compile Include="Model\DAL\PhysicalRecordDAL.cs" />
     <Compile Include="Model\DAL\RecordDAL.cs" />
     <Compile Include="Model\DAL\Service.cs" />
     <Compile Include="Model\Record.cs" />

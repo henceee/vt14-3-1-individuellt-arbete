@@ -23,6 +23,7 @@ namespace Records.Model
         [RegularExpression(@"^[0-9]{2}[0-9]?[:][0-5][0-9]$", ErrorMessage = "Ange speltid i formatet mm:ss eller mmm:ss")]
         public string Playtime { get; set; }
 
+        [Required(ErrorMessage = "Speltid måste anges")]
         [DataType(DataType.Date)]
         public DateTime Releasedate { get; set; }
 
@@ -30,5 +31,11 @@ namespace Records.Model
         [Required(ErrorMessage = "Skivbolag måste anges")]
         [StringLength(20, ErrorMessage = "Skivbolagsnamnet får vara max 20 tecken")]
         public string Recordlabel { get; set; }
+
+        
+        //FK i databasen men nödvändig för att veta ifall det är fysisk/digital skiva
+        //och för att veta ifall ytterligare skivinfo finns i tabellen Fysisk Skiva eller Digital Skiva
+
+        public int RecordTypeID { get; set; }
     }
 }

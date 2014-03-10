@@ -11,6 +11,8 @@ namespace Records.Model.DAL
         #region fält
 
         private RecordDAL _RecordDAL;
+        private DigitalRecordDAL _DigitalRecordDAL;
+        private PhysicalRecordDAL _PhysicalRecordDAL;
 
         #endregion
 
@@ -21,10 +23,124 @@ namespace Records.Model.DAL
             get { return _RecordDAL ?? (_RecordDAL = new RecordDAL()); }
         }
 
+        private DigitalRecordDAL DigitalRecordDAL
+        {
+            get { return _DigitalRecordDAL ?? (_DigitalRecordDAL = new DigitalRecordDAL()); }
+        }
+
+        private PhysicalRecordDAL PhysicalRecordDAL
+        {
+            get { return _PhysicalRecordDAL ?? (_PhysicalRecordDAL = new PhysicalRecordDAL()); }
+        }
+
+        #endregion
+
+        //OBS ATT PhysicalRecord och Digital Record endast har "CRU"-funktionalitet, på grund av RI
+        //Eftersom relationen Skiva-Fysisk Skiva resp. Skiva-Digital Skiva har Cascade och det räcker att ta bort skivan.
+        
+        //På samma vis har Record bara CR D -funktionalitet, då när en fysisk eller digital skiva uppdateras, uppdateras även tabellen skiva.
+
+        #region PhysicalRecord CRU(D) Metoder
+
+        #region SavePhysicalRecord
+
+        public void SavePhysicalRecord(Record record)
+        {
+
+            //OBS VÄNTA TILL SIST MED NEDANSTÅENDE:
+
+            /*ICollection<ValidationResult> validationResults;
+            if(!customer.Validate(out validationResults){
+            
+             var ex = new ValidationException("Objektet klarade inte valideringen.");
+                ex.Data.Add("ValidationResults", validationResults);
+                throw ex;
+            }
+             */
+
+            //Om skivID är noll, så finns inte posten redan och då ska en ny post skapas.
+
+            if (record.RecordID == 0)
+            {
+                PhysicalRecordDAL.InsertPhysicalRecord(record);
+
+            }
+
+                //Annars ska den befintliga posten uppdateras.
+
+            else
+            {
+                PhysicalRecordDAL.UpdatePhysicalRecord(record);
+            }
+
+        }
+
+        #endregion
+
+        #endregion
+
+        #region DigitalRecord CRU(D) Metoder
+
+        #region GetDigitalRecord
+
+        public DigitalRecord GetDigitalRecord(int PhysRecordID) {
+        
+            return DigitalRecordDAL.GetRecordByID(PhysRecordID);
+        }
+
+
+        #endregion
+
+        #region GetDigitalRecordByRecordID
+
+        public List<DigitalRecord> GetDigitalRecordByRecordID(int RecordID) {            
+
+            return DigitalRecordDAL.GetDigitalRecordByRecordID(RecordID);
+        
+        }
+
+        #endregion
+
+        #region SaveDigitalRecord
+
+        public void SaveDigitalRecord(Record record)
+        {
+
+            //OBS VÄNTA TILL SIST MED NEDANSTÅENDE:
+
+            /*ICollection<ValidationResult> validationResults;
+            if(!customer.Validate(out validationResults){
+            
+             var ex = new ValidationException("Objektet klarade inte valideringen.");
+                ex.Data.Add("ValidationResults", validationResults);
+                throw ex;
+            }
+             */
+
+            //Om skivID är noll, så finns inte posten redan och då ska en ny post skapas.
+
+            if (record.RecordID == 0)
+            {
+                DigitalRecordDAL.InsertDigitalRecord(record);
+
+            }
+
+                //Annars ska den befintliga posten uppdateras.
+
+            else
+            {
+                DigitalRecordDAL.UpdateDigitalRecord(record);
+            }
+
+        }
+
         #endregion
 
 
-        #region Record CRUD METODER
+
+        #endregion
+
+        #region Record CR(U)D METODER
 
         /// <summary>
         /// DeleteRecord
@@ -90,36 +206,7 @@ namespace Records.Model.DAL
         /// <param name="record"></param>
         /// <summary>
 
-        #region SaveRecord
-
-        public void SaveRecord(Record record)
-        {
-
-            //OBS VÄNTA TILL SIST MED NEDANSTÅENDE:
-
-            /*ICollection<ValidationResult> validationResults;
-            if(!customer.Validate(out validationResults){
-            
-             var ex = new ValidationException("Objektet klarade inte valideringen.");
-                ex.Data.Add("ValidationResults", validationResults);
-                throw ex;
-            }
-             */
-
-            if (record.RecordID == 0)
-            {
-
-                RecordDAL.InsertRecord(record);
-
-            }
-            else
-            {
-                RecordDAL.UpdateRecord(record);
-            }
-
-        }
-
-        #endregion
+       
 
         #endregion
     }
