@@ -192,12 +192,150 @@ namespace Records.Model.DAL
 
         #endregion
 
-       
+        /// <summary>
+        /// InsertRecordTypeIDPhysical
+        /// Används vid formulär för fysisk skiva. 
+        /// TypID hårdkodas i SPROC med samma namn (appschema.usp_InsertRecordTypeIDDigital)
+        /// så att TypID är 1, FYSISK. 
+        /// </summary>
+        /// <param name="record"></param>
 
-     
+        #region InsertRecordTypeIDPhysical
 
-        
-      
+        public void InsertRecordTypeIDPhysical(Record record)
+        {
 
-    }
+            using (var conn = CreateConnection())
+            {
+
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand("appschema.usp_InsertRecordTypeIDPhyscial", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@Title", SqlDbType.VarChar, 30).Value = record.Title;
+                    cmd.Parameters.Add("@Artist", SqlDbType.VarChar, 20).Value = record.Artist;
+                    cmd.Parameters.Add("@Playtime", SqlDbType.VarChar, 6).Value = record.Playtime;
+                    cmd.Parameters.Add("@Releasedate", SqlDbType.Date).Value = record.Releasedate;
+
+                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    record.RecordID = (int)cmd.Parameters["@ContactID"].Value;
+
+
+                }
+                catch
+                {
+
+                    throw new ApplicationException("An error occured while getting customers from the database.");
+                }
+            }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// InsertRecordTypeIDDigital
+        /// Används vid formulär för digital skiva.
+        /// TypID hårdkodas i SPROC med samma namn (appschema.usp_InsertRecordTypeIDDigital)
+        /// så att TypID är 1, FYSISK. 
+        /// </summary>
+        /// <param name="record"></param>
+
+        #region InsertRecordTypeIDDigital
+
+        public void InsertRecordTypeIDDigital(Record record)
+        {
+
+            using (var conn = CreateConnection())
+            {
+
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand("appschema.usp_InsertRecordTypeIDDigital", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@Title", SqlDbType.VarChar, 30).Value = record.Title;
+                    cmd.Parameters.Add("@Artist", SqlDbType.VarChar, 20).Value = record.Artist;
+                    cmd.Parameters.Add("@Playtime", SqlDbType.VarChar, 6).Value = record.Playtime;
+                    cmd.Parameters.Add("@Releasedate", SqlDbType.Date).Value = record.Releasedate;
+
+                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    record.RecordID = (int)cmd.Parameters["@ContactID"].Value;
+
+
+                }
+                catch
+                {
+
+                    throw new ApplicationException("An error occured while getting customers from the database.");
+                }
+            }
+        }
+
+        #endregion
+
+       /// <summary>
+       /// UpdateRecord
+       /// Uppdaterar info om en skiva i tabellen Skiva, m. hjälp av
+       /// informationen i referensen till ett Record-obj.
+       /// </summary>
+       /// <param name="record"></param>
+
+        #region UpdateRecord
+
+        public void UpdateRecord(Record record)
+        {
+
+            using (var conn = CreateConnection())
+            {
+
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand("appschema.usp_UpdateRecord", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = record.RecordID;
+                    cmd.Parameters.Add("@Title", SqlDbType.VarChar, 30).Value = record.Title;
+                    cmd.Parameters.Add("@Artist", SqlDbType.VarChar, 20).Value = record.Artist;
+                    cmd.Parameters.Add("@Playtime", SqlDbType.VarChar, 6).Value = record.Playtime;
+                    cmd.Parameters.Add("@Releasedate", SqlDbType.Date).Value = record.Releasedate;
+                                       
+                    conn.Open();
+                    cmd.ExecuteNonQuery();                    
+
+
+                }
+                catch
+                {
+
+                    throw new ApplicationException("An error occured while getting customers from the database.");
+                }
+            }
+        }
+
+        #endregion
+
+
+
+
+
+
+
+
+    }  
 }

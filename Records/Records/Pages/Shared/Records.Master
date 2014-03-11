@@ -4,8 +4,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link href="~/Content/MasterStyleSheet.css" rel="stylesheet" />
 <title></title>
     <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server">
+        
     </asp:ContentPlaceHolder>
 </head>
 <body>
@@ -13,18 +15,38 @@
     <div>
         <header>
                     <%--HUVUD--%>
-            <nav>
+            <nav id="menu">
                     <%--MENY--%>
+
+                <ul id="dropdown">
+                    <li id="border">
+                        <asp:HyperLink ID="HomeHyperLink" runat="server" NavigateUrl='<%$ RouteUrl:routename=Records %>' Text="Skivor"/>
+                    </li>
+                                            
+                       <li>Ny Skiva
+                            <ul>
+                                <li>
+                               <asp:HyperLink ID="DigitalHyperLink" runat="server" NavigateUrl='<%$ RouteUrl:routename=NewDigital %>' Text="Digital Skiva"/>   
+                                </li>
+                                <li>
+                                <asp:HyperLink ID="PhysicalHyperLink" runat="server" NavigateUrl='<%$ RouteUrl:routename=NewPhysical %>' Text="Fysisk Skiva"/>
+                                </li>
+                            </ul>                        
+                      </li> 
+                </ul>
+                
             </nav>
         
         </header>
 
         <main role="main">
-
+            
+            <div id="content">
                     <%--SIDINNEHÅLL--%>
 
                 <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
                 </asp:ContentPlaceHolder>
+            </div>             
         </main>
         
        <footer>

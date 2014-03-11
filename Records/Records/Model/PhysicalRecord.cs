@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Records.Model.DAL
+namespace Records.Model
 {
     public class PhysicalRecord
     {

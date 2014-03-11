@@ -18,15 +18,14 @@ namespace Records.Pages.RecordPages
 
         }
 
-        // The id parameter should match the DataKeyNames value set on the control
-        // or be decorated with a value provider attribute, e.g. [QueryString]int id
+       
         public Records.Model.Record FormView1_GetItem([RouteData]int id)
         {
-
             try
             {
                 Service service = new Service();
                 return service.GetRecord(id);
+
 
             }
             catch (Exception)
@@ -34,9 +33,11 @@ namespace Records.Pages.RecordPages
                 Page.ModelState.AddModelError(String.Empty, "Fel inträffade då kunden hämtades vid redigering.");
                 return null;
             }
-                         
-            
-            
         }
+
+      
+
+
+
     }
 }

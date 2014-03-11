@@ -11,93 +11,104 @@ namespace Records.Model.DAL
     {
          /// <summary>
         /// InsertDigitalRecord
-        /// Lägger in information om en skiva i tabellerna "Skiva" samt "Fysisk Skiva",
-        /// med hjälp av dess skivID (RecordID, återfinns i egenskapen
-        /// RecordID i referensen till Record-objektet)
+        /// Lägger in information om en skiva i tabellen "Fysisk Skiva"  
+        /// m. hjälp av informationen ur referensen till ett DigitalRecord-obj.
         /// </summary>
-        /// <param name="record"></param>
+        /// <param name="digrecord"></param>
 
        #region InsertDigitalRecord
 
-        public void InsertDigitalRecord(Record record)
+        public void InsertDigitalRecord(DigitalRecord digrecord)
         {
-            throw new NotImplementedException();
 
-            //using (var conn = CreateConnection())
-            //{
+            using (var conn = CreateConnection())
+            {
 
-            //    try
-            //    {
-            //        SqlCommand cmd = new SqlCommand("", conn);
+                try
+                {
+                    
 
-            //        cmd.CommandType = CommandType.StoredProcedure;
+                    SqlCommand cmd = new SqlCommand("appschema.usp_InsertDigital", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-            //        cmd.add("
+                   
+                    cmd.Parameters.Add("@Playtime", SqlDbType.VarChar, 6).Value = digrecord.DiscSize;
+                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = digrecord.RecordID;
 
-
-
-            //    }
-            //    catch
-            //    {
+                    cmd.Parameters.Add("@DigRecordID", SqlDbType.Int).Direction = ParameterDirection.Output;
 
 
-            //        throw new ApplicationException("An error occured while getting customers from the database.");
-            //    }
-            //}
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
 
+                    digrecord.DigRecordID = (int)cmd.Parameters["@DigRecordID"].Value;
+
+
+                }
+                catch
+                {
+
+                    throw new ApplicationException("An error occured while getting customers from the database.");
+                }
+            }
         }
 
         #endregion
 
 
         /// <summary>
-        /// UpdateRecord
-        /// Uppdaterar information om en skiva i tabllen Skiva och Digital Skiva,
-        /// med hjälp av dess skivID (RecordID, återfinns i egenskapen
-        /// RecordID i referensen till Record-objektet)
+        /// UpdateDigitalRecord
+        /// Uppdaterar info om en skiva i tabellen Digital Skiva, m. hjälp av
+        /// informationen i referensen till ett DigitalRecord-obj.
         /// </summary>
         /// <param name="record"></param>
 
       #region UpdateDigitalRecord
 
-        public void UpdateDigitalRecord(Record record)
+        public void UpdateDigitalRecord(DigitalRecord digrecord)
         {
-            //TODO: Implementera DigitalRecordDAL - UpdateDigitalRecord
 
-            throw new NotImplementedException();
+            using (var conn = CreateConnection())
+            {
 
-            //using (var conn = CreateConnection())
-            //{
+                try
+                {                   
 
-            //    try
-            //    {
-            //        SqlCommand cmd = new SqlCommand("Person.uspUpdateContact", conn);
-            //        cmd.CommandType = CommandType.StoredProcedure;
+                    SqlCommand cmd = new SqlCommand("appschema.usp_UpdateDigitalRecord", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@DigRecordID", SqlDbType.Int).Value = digrecord.DigRecordID;                   
+                    cmd.Parameters.Add("@Playtime", SqlDbType.VarChar, 6).Value = digrecord.DiscSize;
+                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = digrecord.RecordID;  
+                   
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
 
 
-            //        //cmd.Parameters.Add("@FirstName", SqlDbType.VarChar, 50).Value = contact.FirstName;
-            //        //cmd.Parameters.Add("@LastName", SqlDbType.VarChar, 50).Value = contact.LastName;
-            //        //cmd.Parameters.Add("@EmailAddress", SqlDbType.VarChar, 50).Value = contact.EmailAddress;
-            //        //cmd.Parameters.Add("@ContactID", SqlDbType.Int, 4).Value = contact.ContactID;
+                }
+                catch
+                {
 
-            //        conn.Open();
-            //        cmd.ExecuteNonQuery();
-
-            //    }
-            //    catch
-            //    {
-
-            ////        throw new ApplicationException("An error occured while getting customers from the database.");
-            ////    }
-            //}
-
+                    throw new ApplicationException("An error occured while getting customers from the database.");
+                }
+            }
         }
 
         #endregion
 
+
+      /// <summary>
+      /// GetDigitalRecordByRecordID
+      /// Hämtar ut en specifik skiva ur tabellen Digital Skiva, med hjälp av
+      /// Skivid(RecordID)
+      /// </summary>
+      /// <param name="RecordID"></param>
+      /// <returns>En lista med referens(er) till DigitalRecord obj. </returns>
+      
       #region GetDigitalRecordByRecordID
 
-        public List<DigitalRecord> GetDigitalRecordByRecordID(int RecordID) {
+        public DigitalRecord GetDigitalRecordByRecordID(int RecordID) {
 
 
             using (var conn = CreateConnection())
@@ -112,37 +123,33 @@ namespace Records.Model.DAL
 
                     cmd.Parameters.AddWithValue("@RecordID", RecordID);
 
-                    List<DigitalRecord> digitalRecords = new List<DigitalRecord>(10);
+
 
                     conn.Open();
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-
-
-                        var DigRecordIDIndex = reader.GetOrdinal("DigSkivID");
-                        var DiscSizeIndex = reader.GetOrdinal("Storlek");
-                        var RecordIDIndex = reader.GetOrdinal("SkivID");
-
-
-                        while (reader.Read())
+                        if (reader.Read())
                         {
-                            digitalRecords.Add(new DigitalRecord { 
-                            
-                            DigRecordID = reader.GetInt32(DigRecordIDIndex),
-                            DiscSize = reader.GetString(DiscSizeIndex),
-                            RecordID = reader.GetInt32(RecordIDIndex)
-                            
-                            });
 
+                            var DigRecordIDIndex = reader.GetOrdinal("DigSkivID");
+                            var DiscSizeIndex = reader.GetOrdinal("Storlek");
+                            var RecordIDIndex = reader.GetOrdinal("SkivID");
+
+                            return new DigitalRecord
+                            {
+
+                                DigRecordID = reader.GetInt32(DigRecordIDIndex),
+                                DiscSize = reader.GetString(DiscSizeIndex),
+                                RecordID = reader.GetInt32(RecordIDIndex)
+
+
+                            };
                         }
 
                     }
 
-                    digitalRecords.TrimExcess();
-
-                    return digitalRecords;
-
+                    return null;
                 }
                 catch
                 {
@@ -151,15 +158,23 @@ namespace Records.Model.DAL
                     throw new ApplicationException("An error occured while getting customers from the database.");
                 }
 
-                
-            }
+            }  
+            
         }
 
         #endregion
 
-      #region GetRecordByID
+      /// <summary>
+        /// GetDigitalRecordByID
+        /// Hämtar ut en specifik skiva ur tabellen Digital Skiva, med hjälp av
+        /// DigSkivID (DigRecordID)
+      /// </summary>
+      /// <param name="DigRecordID"></param>
+        /// <returns></returns>
 
-        public DigitalRecord GetRecordByID(int DigRecordID)
+        #region GetDigitalRecordByID
+
+        public DigitalRecord GetDigitalRecordByID(int DigRecordID)
         {
            
             using (var conn = CreateConnection())

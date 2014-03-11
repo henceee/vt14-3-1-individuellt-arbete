@@ -9,79 +9,104 @@ namespace Records.Model.DAL
 {
     public class PhysicalRecordDAL:DALBase
     {
-        /// <summary>
-        /// UpdatePhysicalRecord
-        /// Uppdaterar information om en skiva i tabllen "Skiva" samt "Fysisk Skiva",
-        /// med hjälp av dess skivID (RecordID, återfinns i egenskapen
-        /// RecordID i referensen till Record-objektet)
-        /// </summary>
-        /// <param name="record"></param>
+       /// <summary>        
+        /// InsertDigitalRecord
+        /// Lägger in information om en skiva i tabellen "Fysisk Skiva"  
+        /// m. hjälp av informationen ur referensen till ett PhysicalRecord-obj.           
+       /// </summary>
+       /// <param name="physrecord"></param>
 
       #region InsertPhysicalRecord
 
-        public void InsertPhysicalRecord(Record record)
+        public void InsertPhysicalRecord(PhysicalRecord physrecord)
         {
-            throw new NotImplementedException();
+            using (var conn = CreateConnection())
+            {
 
-            //using (var conn = CreateConnection())
-            //{
-
-            //    try
-            //    {
-            //        SqlCommand cmd = new SqlCommand("", conn);
-
-            //        cmd.CommandType = CommandType.StoredProcedure;
-
-            //        cmd.add("
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("appschema.usp_InsertPhysical", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
 
+                    cmd.Parameters.Add("@Priceatpurchase", SqlDbType.Decimal).Value = physrecord.PriceAtPurchase;
+                    cmd.Parameters.Add("@Dateofpurchase", SqlDbType.Date).Value = physrecord.DateofPurchase;
+                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = physrecord.RecordID;
 
-            //    }
-            //    catch
-            //    {
+                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Direction = ParameterDirection.Output;                  
+                    
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    physrecord.PhysRecordID = (int)cmd.Parameters["@PhysRecordID"].Value;
 
 
-            //        throw new ApplicationException("An error occured while getting customers from the database.");
-            //    }
-            //}
+                }
+                catch
+                {
+
+                    throw new ApplicationException("An error occured while getting customers from the database.");
+                }
+            }
 
         }
 
         #endregion
-
-        
+              
+      /// <summary>
+        /// UpdatePhysicalRecord
+        /// Uppdaterar info om en skiva i tabellen Fysisk Skiva, m. hjälp av
+        /// informationen i referensen till ett PhysicalRecord-obj.
+      /// </summary>
+      /// <param name="physrecord"></param>
+  
       #region UpdatePhysicalRecord
 
-        public void UpdatePhysicalRecord(Record record)
+        public void UpdatePhysicalRecord(PhysicalRecord physrecord)
         {
-            throw new NotImplementedException();
+            using (var conn = CreateConnection())
+            {
 
-            //using (var conn = CreateConnection())
-            //{
+                try
+                {
 
-            //    try
-            //    {
-            //        //TODO: IMPLEMENTERA PhysicalRecordDAL - UpdateRecord()
-
-
-            //    }
-            //    catch
-            //    {
+                    SqlCommand cmd = new SqlCommand("appschema.usp_UpdatePhyscialRecord", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
 
-            //        throw new ApplicationException();
-            //    }
-            //}
+                    cmd.Parameters.Add("@PhysRecordID", SqlDbType.Int).Value = physrecord.PhysRecordID;
+                    cmd.Parameters.Add("@Priceatpurchase", SqlDbType.Decimal).Value = physrecord.PriceAtPurchase;
+                    cmd.Parameters.Add("@Dateofpurchas", SqlDbType.Date).Value = physrecord.DateofPurchase;
+                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = physrecord.RecordID;                  
+                    
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+
+                }
+                catch
+                {
+
+                    throw new ApplicationException("An error occured while getting customers from the database.");
+                }
+            }
 
         }
 
         #endregion
+
+        /// <summary>
+        /// GetDigitalRecordByRecordID
+        /// Hämtar ut en specifik skiva ur tabellen Fysisk Skiva, med hjälp av
+        /// Skivid(RecordID)
+        /// </summary>   
+        /// <param name="RecordID"></param>
+        /// <returns>En referens till PhysicalRecord obj. </returns>
 
       #region GetPhysicalRecordByRecordID
 
-        public List<PhysicalRecord> GetPhysicalRecordByRecordID(int RecordID)
+        public PhysicalRecord GetPhysicalRecordByRecordID(int RecordID)
         {
-
 
             using (var conn = CreateConnection())
             {
@@ -95,39 +120,31 @@ namespace Records.Model.DAL
 
                     cmd.Parameters.AddWithValue("@RecordID", RecordID);
 
-                    List<PhysicalRecord> PhysicalRecords = new List<PhysicalRecord>(10);
 
                     conn.Open();
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                       
-                        var PhysRecordIDIndex = reader.GetOrdinal("FysSkivID");
-                        var PriceAtPurchaseIndex = reader.GetOrdinal("Inköpspris");
-                        var DateofPurchaseIndex = reader.GetOrdinal("Inköpsdatum");
-                        var RecordIDIndex = reader.GetOrdinal("SkivID");
-                      
-
-                        while (reader.Read())
+                        if (reader.Read())
                         {
-                            PhysicalRecords.Add(new PhysicalRecord
-                            {
-                                PhysRecordID = reader.GetInt32(PhysRecordIDIndex),
-                                PriceAtPurchase = reader.GetDecimal(PriceAtPurchaseIndex),
-                                DateofPurchase = reader.GetDateTime(DateofPurchaseIndex),
-                                RecordID = reader.GetInt32(RecordIDIndex)
+                            var PhysRecordIDIndex = reader.GetOrdinal("FysSkivID");
+                            var PriceAtPurchaseIndex = reader.GetOrdinal("Inköpspris");
+                            var DateofPurchaseIndex = reader.GetOrdinal("Inköpsdatum");
+                            var RecordIDIndex = reader.GetOrdinal("SkivID");
 
 
-                            });
+                            return new PhysicalRecord
+                             {
+                                 PhysRecordID = reader.GetInt32(PhysRecordIDIndex),
+                                 PriceAtPurchase = reader.GetDecimal(PriceAtPurchaseIndex),
+                                 DateofPurchase = reader.GetDateTime(DateofPurchaseIndex),
+                                 RecordID = reader.GetInt32(RecordIDIndex)
+
+                             };
 
                         }
-
                     }
-
-                    PhysicalRecords.TrimExcess();
-
-                    return PhysicalRecords;
-
+                    return null;
                 }
                 catch
                 {
@@ -140,11 +157,21 @@ namespace Records.Model.DAL
             }
         }
 
+       
+
         #endregion
 
-      #region GetRecordByID
+        /// <summary>
+        ///  /// GetPhysicalRecordByID
+        /// Hämtar ut en specifik skiva ur tabellen Digital Skiva, med hjälp av
+        /// FysSkivID (PhysRecordID)
+        /// </summary>
+        /// <param name="RecordID"></param>
+        /// <returns></returns>
 
-        public PhysicalRecord GetRecordByID(int RecordID)
+        #region GetPhysicalRecordByID
+
+        public PhysicalRecord GetPhysicalRecordByID(int PhysRecordID)
         {
                       
             using (var conn = CreateConnection())
@@ -157,7 +184,7 @@ namespace Records.Model.DAL
 
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@PhysRecordID", RecordID);
+                    cmd.Parameters.AddWithValue("@PhysRecordID", PhysRecordID);
 
                     conn.Open();
 

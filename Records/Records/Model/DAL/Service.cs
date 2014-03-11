@@ -36,17 +36,61 @@ namespace Records.Model.DAL
         #endregion
 
         //OBS ATT PhysicalRecord och Digital Record endast har "CRU"-funktionalitet, på grund av RI
-        //Eftersom relationen Skiva-Fysisk Skiva resp. Skiva-Digital Skiva har Cascade och det räcker att ta bort skivan.
+        //Eftersom relationen Skiva-Fysisk Skiva resp. Skiva-Digital Skiva har Cascade och det räcker att ta bort skivan.        
         
-        //På samma vis har Record bara CR D -funktionalitet, då när en fysisk eller digital skiva uppdateras, uppdateras även tabellen skiva.
 
         #region PhysicalRecord CRU(D) Metoder
 
-        #region SavePhysicalRecord
+        /// <summary>
+        /// GetPhysicalRecord
+        /// Hämtar info om en specifik skiva ur databasen.  
+        /// Anropar GetPhysicalRecordByID i PhysicalRecordDAL och skickar med DigRecordID
+        /// </summary>
+        /// <returns>PhysicalRecord-objekt innehållande information om skivan</returns>
+        /// <param name="RecordID"></param>
 
-        public void SavePhysicalRecord(Record record)
+        #region GetPhysicalRecord
+
+        public PhysicalRecord GetPhysicalRecord(int PhysRecordID)
         {
 
+            return PhysicalRecordDAL.GetPhysicalRecordByID(PhysRecordID);
+        }
+
+
+        #endregion
+
+        /// <summary>
+        /// GetPhysicalRecordByRecordID
+        /// Hämtar info om en specifik skiva ur databasen.  
+        /// Anropar GetPhysicalRecordByRecordID i PhysicalRecordDAL och skickar med RecordID
+        /// </summary>
+        /// <param name="RecordID"></param>
+        /// <returns>En lista med referens(er) till PhysicalRecord-obj.</returns>
+
+        #region GetPhysicalRecordByRecordID
+
+        public PhysicalRecord GetPhysicalRecordByRecordID(int RecordID)
+        {
+
+            return PhysicalRecordDAL.GetPhysicalRecordByRecordID(RecordID);
+
+        }
+
+        #endregion
+
+       
+        /// <summary>   
+        /// SavePhysicalRecord
+        /// Sparar en skiva m. hjälp av en referens till ett PhysicalRecord-obj.        
+        /// </summary>
+        /// <param name="record"></param>
+
+        #region SavePhysicalRecord
+
+        public void SavePhysicalRecord(PhysicalRecord record)
+        {
+            //TODO: ÄNDRA OCH IMPLEMENTERA  SavePhysicalRecord
             //OBS VÄNTA TILL SIST MED NEDANSTÅENDE:
 
             /*ICollection<ValidationResult> validationResults;
@@ -81,19 +125,35 @@ namespace Records.Model.DAL
 
         #region DigitalRecord CRU(D) Metoder
 
+        /// <summary>
+        /// GetDigitalRecord
+        /// Hämtar info om en specifik skiva ur databasen.  
+        /// Anropar GetDigitalRecordByID i DigitalRecordDAL och skickar med DigRecordID
+        /// </summary>
+        /// <returns>DigitalRecord-objekt innehållande information om skivan</returns>
+        /// <param name="RecordID"></param>
+
         #region GetDigitalRecord
 
-        public DigitalRecord GetDigitalRecord(int PhysRecordID) {
+        public DigitalRecord GetDigitalRecord(int DigRecordID) {
         
-            return DigitalRecordDAL.GetRecordByID(PhysRecordID);
+            return DigitalRecordDAL.GetDigitalRecordByID(DigRecordID);
         }
 
 
         #endregion
 
+        /// <summary>
+        /// GetDigitalRecordByRecordID
+        /// Hämtar info om en specifik skiva ur databasen.  
+        /// Anropar GetDigitalRecordByRecordID i DigitalRecordDAL och skickar med RecordID
+        /// </summary>
+        /// <param name="RecordID"></param>
+        /// <returns>En lista med referens(er) till DigitalRecord-obj.</returns>
+
         #region GetDigitalRecordByRecordID
 
-        public List<DigitalRecord> GetDigitalRecordByRecordID(int RecordID) {            
+        public DigitalRecord GetDigitalRecordByRecordID(int RecordID) {            
 
             return DigitalRecordDAL.GetDigitalRecordByRecordID(RecordID);
         
@@ -101,11 +161,17 @@ namespace Records.Model.DAL
 
         #endregion
 
+        /// <summary>       
+        /// SaveDigitalRecord
+        /// Sparar en skiva m. hjälp av en referens till ett DigitalRecord-obj.        
+        /// </summary>
+        /// <param name="digrecord"></param>
+
         #region SaveDigitalRecord
 
-        public void SaveDigitalRecord(Record record)
+        public void SaveDigitalRecord(DigitalRecord digrecord)
         {
-
+            
             //OBS VÄNTA TILL SIST MED NEDANSTÅENDE:
 
             /*ICollection<ValidationResult> validationResults;
@@ -119,9 +185,9 @@ namespace Records.Model.DAL
 
             //Om skivID är noll, så finns inte posten redan och då ska en ny post skapas.
 
-            if (record.RecordID == 0)
+            if (digrecord.RecordID == 0)
             {
-                DigitalRecordDAL.InsertDigitalRecord(record);
+                DigitalRecordDAL.InsertDigitalRecord(digrecord);
 
             }
 
@@ -129,7 +195,7 @@ namespace Records.Model.DAL
 
             else
             {
-                DigitalRecordDAL.UpdateDigitalRecord(record);
+                DigitalRecordDAL.UpdateDigitalRecord(digrecord);
             }
 
         }
@@ -140,7 +206,7 @@ namespace Records.Model.DAL
 
         #endregion
 
-        #region Record CR(U)D METODER
+        #region Record CRUD METODER
 
         /// <summary>
         /// DeleteRecord
@@ -198,16 +264,62 @@ namespace Records.Model.DAL
 
         /// <summary>
         /// SaveRecord
-        /// Sparar en skiva.        
-        /// Om RecordID är noll => ny skiva => Anropar InsertRecord i RecordDAL, skickar med en referens till ett Record-obj.
-        /// Annars => uppdatera skiva => Anropar UpdateRecord i RecordDAL, skickar med en referens till ett Record-obj.
+        /// Sparar en skiva m. hjälp av en referens till ett Record-obj.
         /// </summary>
-        /// <returns>En referens till ett Record-objekt (skivan som ska sparas).</returns>
         /// <param name="record"></param>
-        /// <summary>
 
-       
+        #region SaveRecord
+
+        public void SaveRecord(Record record) {
+
+            //VÄNTA TILL SIST MED DETTA!!
+
+            //ICollection<ValidationResult> ValidationResults;
+
+            //if (!contact.Validate(out ValidationResults))
+            //{
+
+            //    var ex = new ValidationException("Objektet klarade inte valideringen");
+            //    ex.Data.Add("ValidationResults", ValidationResults);
+            //    throw ex;
+            //}
+
+            
+            if (record.RecordID == 0)
+            {
+                //Är RecordTypeID (skivtypID) 1 så är det en FYSISK skiva...
+
+                if (record.RecordTypeID == 1)
+                {
+                    RecordDAL.InsertRecordTypeIDPhysical(record);
+                }
+
+                //Är RecordTypeID (skivtypID) 1 så är det en DIGITAL skiva...
+
+                else if (record.RecordTypeID == 2)
+                {
+                    RecordDAL.InsertRecordTypeIDDigital(record);
+                }
+
+                //RecordType får bara va antingen fysisk eller digital, så annars kastas ett undantag!
+
+                else {
+
+                    throw new ApplicationException();
+                }
+                
+            }
+            else
+            {
+
+                RecordDAL.UpdateRecord(record);
+            }
+        }
 
         #endregion
+
+
+        #endregion
+
     }
 }

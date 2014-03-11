@@ -125,6 +125,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\MasterStyleSheet.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
@@ -143,6 +144,9 @@
     <Content Include="Pages\RecordPages\Delete.aspx" />
     <Content Include="Pages\RecordPages\Details.aspx" />
     <Content Include="Pages\RecordPages\List.aspx" />
+    <Content Include="Pages\RecordPages\NewDigital.aspx" />
+    <Content Include="Pages\RecordPages\NewPhysical.aspx" />
+    <Content Include="Pages\Shared\DigitalRecordDetails.ascx" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
@@ -212,6 +216,27 @@
     </Compile>
     <Compile Include="Pages\RecordPages\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RecordPages\NewDigital.aspx.cs">
+      <DependentUpon>NewDigital.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RecordPages\NewDigital.aspx.designer.cs">
+      <DependentUpon>NewDigital.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RecordPages\NewPhysical.aspx.cs">
+      <DependentUpon>NewPhysical.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RecordPages\NewPhysical.aspx.designer.cs">
+      <DependentUpon>NewPhysical.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Shared\DigitalRecordDetails.ascx.cs">
+      <DependentUpon>DigitalRecordDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Shared\DigitalRecordDetails.ascx.designer.cs">
+      <DependentUpon>DigitalRecordDetails.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Shared\Records.Master.cs">
       <DependentUpon>Records.Master</DependentUpon>

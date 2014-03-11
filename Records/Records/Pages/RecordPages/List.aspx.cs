@@ -34,6 +34,8 @@ namespace Records.Pages.RecordPages
            
         }
 
+        #region Metod för att hämta info ur tabellen skiva        
+       
 
         public IEnumerable<Record> ListView1_GetData1()
         {
@@ -51,7 +53,7 @@ namespace Records.Pages.RecordPages
             }
         }
 
-
+         #endregion
 
     }
 }

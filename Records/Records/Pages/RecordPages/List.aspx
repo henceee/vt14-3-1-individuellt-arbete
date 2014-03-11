@@ -11,7 +11,8 @@
     <asp:Panel ID="UppdateMessagePanel" runat="server" Visible="false">
             <p><asp:Literal ID="UppdateMessage" runat="server">Kontakten {0}</asp:Literal></p>
         </asp:Panel>
-
+    
+<br />
 <asp:ListView ID="ListView1" runat="server"
     ItemType="Records.Model.Record"
     SelectMethod="ListView1_GetData1"
