@@ -20,7 +20,7 @@ namespace Records.Pages.RecordPages
 
         public Service Service { get { return _service ?? (_service = new Service()); } }
 
-        public int ID {
+        public int Id {
 
             //ID som skickats med som argument vid GetRouteURL hämtas ut
 
@@ -33,14 +33,14 @@ namespace Records.Pages.RecordPages
         {
             //Trycker användaren avbryt, tas anv. tillbaka till detaljerna för skivan med det ID
 
-            CancelLinkButton.NavigateUrl = GetRouteUrl("RecordDetails", new { id = ID });
+            CancelLinkButton.NavigateUrl = GetRouteUrl("RecordDetails", new { id = Id });
 
 
             if (!IsPostBack)
             {
                 try {
 
-                    var record = Service.GetRecord(ID);
+                    var record = Service.GetRecord(Id);
                     
                     if(record != null){
 

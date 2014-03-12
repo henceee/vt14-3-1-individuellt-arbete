@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Records.Master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="Records.Pages.RecordPages.Details" %>
 
-<%--<%@ Register Src="../Shared/DigitalRecordDetails.ascx" TagPrefix="uc" TagName="DigRecordDetails" %>
---%>
+<%--<%@ Register Src="../Shared/DigitalRecordDetails.ascx" TagPrefix="uc" TagName="DigRecordDetails" %>--%>
+
 
 
 
@@ -10,7 +10,10 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    
+
+     <asp:Panel ID="UppdateMessagePanel" runat="server" Visible="false">
+            <p><asp:Literal ID="UppdateMessage" runat="server">Kontakten {0}</asp:Literal></p>
+        </asp:Panel>
 
     <asp:FormView ID="FormView1" runat="server"
     ItemType="Records.Model.Record"
@@ -51,17 +54,75 @@
                  
             </dd>
 
-            <dd>
-                <asp:HyperLink ID="DeleteHyperLink" runat="server" NavigateUrl='<%#: GetRouteUrl("RecordDelete", new {id =Item.RecordID }) %>' Text="Ta bort"/>
-           
-                <asp:HyperLink ID="ReturnHyperLink" runat="server" NavigateUrl='<%#: GetRouteUrl("Records", null) %>' Text="Tillbaka"/>
-            </dd>
-                 
-                 
+            
         </ItemTemplate>
     </asp:FormView>
 
-<%--    <uc:DigRecordDetails runat="server" />--%>
+    <asp:FormView ID="FormView2" runat="server"
+        ItemType="Records.Model.DigitalRecord"
+        DataKeyNames="RecordID"
+        SelectMethod="FormView2_GetItem">
+
+        <ItemTemplate>
+
+            <dd>
+                <b>Skivtyp:</b>
+            </dd>
+            <dd>
+                Digital Skiva
+            </dd>
+            <dd>
+                <b>Storlek på disken:</b>
+            </dd>
+            <dd>
+                <%#: Item.DiscSize %>
+              
+            </dd>
+            
+            
+            
+        </ItemTemplate>
+  
+
+    </asp:FormView>
+
+
+    <asp:FormView ID="FormView3" runat="server"
+        ItemType="Records.Model.PhysicalRecord"
+        DataKeyNames="RecordID"
+        SelectMethod="FormView3_GetItem">
+
+        <ItemTemplate>
+
+             <dd>
+                <b>Skivtyp:</b>
+            </dd>
+            <dd>
+                Fysisk Skiva
+            </dd>
+            <dd>
+                <b>InköpsPris</b>
+            </dd>
+            <dd>
+                <%#: Item.PriceAtPurchase %>
+                              
+            </dd>
+            <dd>
+                <b>Inköpsdatum</b>
+            </dd>
+            <dd>
+                <%#: Item.DateofPurchase.ToShortDateString() %>
+                              
+            </dd>            
+            
+        </ItemTemplate>
+
+    </asp:FormView>
+    <br />
+                <asp:HyperLink ID="DeleteHyperLink" runat="server" Text="Ta bort"/>
+           
+                <asp:HyperLink ID="ReturnHyperLink" runat="server"  Text="Tillbaka"/>
+            
 
 </asp:Content>
 

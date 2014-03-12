@@ -23,8 +23,8 @@ namespace Records.Model
         [RegularExpression(@"^[0-9]{2}[0-9]?[:][0-5][0-9]$", ErrorMessage = "Ange speltid i formatet mm:ss eller mmm:ss")]
         public string Playtime { get; set; }
 
-        [Required(ErrorMessage = "Speltid måste anges")]
-        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Releasedatum måste anges")]
+        [DataType(DataType.Date, ErrorMessage="Releasedatum måste kunna tolkas som ett datum.")]
         public DateTime Releasedate { get; set; }
 
 

@@ -258,6 +258,12 @@ namespace Records.Model.DAL
 
                 try
                 {
+//                    @Title varchar(30) = ' ',
+//@Artist varchar(20) = ' ',
+//@Playtime varchar(6)= ' ',
+//@Releasedate date='1900-01-01',
+//@Recordlabel varchar(20)= ' ',
+//@RecordID int OUTPUT
 
                     SqlCommand cmd = new SqlCommand("appschema.usp_InsertRecordTypeIDDigital", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -266,6 +272,7 @@ namespace Records.Model.DAL
                     cmd.Parameters.Add("@Artist", SqlDbType.VarChar, 20).Value = record.Artist;
                     cmd.Parameters.Add("@Playtime", SqlDbType.VarChar, 6).Value = record.Playtime;
                     cmd.Parameters.Add("@Releasedate", SqlDbType.Date).Value = record.Releasedate;
+                    cmd.Parameters.Add("@Recordlabel", SqlDbType.VarChar, 20).Value = record.Recordlabel;
 
                     cmd.Parameters.Add("@RecordID", SqlDbType.Int).Direction = ParameterDirection.Output;
 
@@ -274,7 +281,7 @@ namespace Records.Model.DAL
                     conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    record.RecordID = (int)cmd.Parameters["@ContactID"].Value;
+                    record.RecordID = (int)cmd.Parameters["@RecordID"].Value;
 
 
                 }

@@ -1,8 +1,16 @@
-﻿#menu ul {
+﻿#menu {
+
+background-color:#C5E4FD;
+ height:30px;
+ width: 50%;
+ margin-left: 20%;
+
+}
+
+#menu ul {
 
     float: left;    
-    list-style: none;
-    background-color: #C5E4FD; 
+    list-style: none;     
     margin-bottom: 50%;
     margin-left: 20%;
     
@@ -12,6 +20,7 @@
 
      display: block;
      height:30px;
+     
 }
 
 #menu a {
@@ -38,7 +47,7 @@
     position: relative;
     width: 200px;
     
-    /*display: inline-block;*/
+    
     
 }
 
@@ -51,9 +60,9 @@
 
 }
 
-   #dropdown li:hover a {
-         color: white;
-    }
+#dropdown li:hover a {
+        color: white;
+}
 
 #dropdown ul {
     
@@ -86,13 +95,18 @@
 
     float: left;
     margin-top: 1%;
-    margin-left: -25.5%;
+    margin-left: -25%;
     
 }
 
 #border {
 
-border-right: 1px solid black;
+border-left: 1px solid #4D91C9;
+border-right: 1px solid #4D91C9;
+}
+
+#rightborder {
+    border-right: 1px solid black;
 }
 
 dt a {
@@ -103,9 +117,17 @@ dt a {
     
 
 }
-
 dt {
 
     background-color: #C5E4FD;
 
 }
+
+dd a{
+
+    color: black;
+    text-decoration: none;
+    padding: 0 10px 0 10px;    
+    background-color: #C5E4FD;
+}
+

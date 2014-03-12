@@ -41,24 +41,8 @@ namespace Records.Model.DAL
 
         #region PhysicalRecord CRU(D) Metoder
 
-        /// <summary>
-        /// GetPhysicalRecord
-        /// Hämtar info om en specifik skiva ur databasen.  
-        /// Anropar GetPhysicalRecordByID i PhysicalRecordDAL och skickar med DigRecordID
-        /// </summary>
-        /// <returns>PhysicalRecord-objekt innehållande information om skivan</returns>
-        /// <param name="RecordID"></param>
-
-        #region GetPhysicalRecord
-
-        public PhysicalRecord GetPhysicalRecord(int PhysRecordID)
-        {
-
-            return PhysicalRecordDAL.GetPhysicalRecordByID(PhysRecordID);
-        }
-
-
-        #endregion
+        
+        
 
         /// <summary>
         /// GetPhysicalRecordByRecordID
@@ -133,15 +117,7 @@ namespace Records.Model.DAL
         /// <returns>DigitalRecord-objekt innehållande information om skivan</returns>
         /// <param name="RecordID"></param>
 
-        #region GetDigitalRecord
-
-        public DigitalRecord GetDigitalRecord(int DigRecordID) {
-        
-            return DigitalRecordDAL.GetDigitalRecordByID(DigRecordID);
-        }
-
-
-        #endregion
+     
 
         /// <summary>
         /// GetDigitalRecordByRecordID
@@ -166,6 +142,9 @@ namespace Records.Model.DAL
         /// Sparar en skiva m. hjälp av en referens till ett DigitalRecord-obj.        
         /// </summary>
         /// <param name="digrecord"></param>
+        /// 
+
+      
 
         #region SaveDigitalRecord
 

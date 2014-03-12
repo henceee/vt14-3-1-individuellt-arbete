@@ -33,15 +33,12 @@ namespace Records.Model.DAL
 
                    
                     cmd.Parameters.Add("@Playtime", SqlDbType.VarChar, 6).Value = digrecord.DiscSize;
-                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = digrecord.RecordID;
-
-                    cmd.Parameters.Add("@DigRecordID", SqlDbType.Int).Direction = ParameterDirection.Output;
-
+                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = digrecord.RecordID;                   
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    digrecord.DigRecordID = (int)cmd.Parameters["@DigRecordID"].Value;
+                    
 
 
                 }
@@ -76,8 +73,7 @@ namespace Records.Model.DAL
 
                     SqlCommand cmd = new SqlCommand("appschema.usp_UpdateDigitalRecord", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.Add("@DigRecordID", SqlDbType.Int).Value = digrecord.DigRecordID;                   
+                                    
                     cmd.Parameters.Add("@Playtime", SqlDbType.VarChar, 6).Value = digrecord.DiscSize;
                     cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = digrecord.RecordID;  
                    
@@ -132,14 +128,14 @@ namespace Records.Model.DAL
                         if (reader.Read())
                         {
 
-                            var DigRecordIDIndex = reader.GetOrdinal("DigSkivID");
+                            
                             var DiscSizeIndex = reader.GetOrdinal("Storlek");
                             var RecordIDIndex = reader.GetOrdinal("SkivID");
 
                             return new DigitalRecord
                             {
 
-                                DigRecordID = reader.GetInt32(DigRecordIDIndex),
+                                
                                 DiscSize = reader.GetString(DiscSizeIndex),
                                 RecordID = reader.GetInt32(RecordIDIndex)
 
@@ -164,70 +160,9 @@ namespace Records.Model.DAL
 
         #endregion
 
-      /// <summary>
-        /// GetDigitalRecordByID
-        /// Hämtar ut en specifik skiva ur tabellen Digital Skiva, med hjälp av
-        /// DigSkivID (DigRecordID)
-      /// </summary>
-      /// <param name="DigRecordID"></param>
-        /// <returns></returns>
+     
+        
 
-        #region GetDigitalRecordByID
-
-        public DigitalRecord GetDigitalRecordByID(int DigRecordID)
-        {
-           
-            using (var conn = CreateConnection())
-            {
-
-                try
-                {
-
-                    SqlCommand cmd = new SqlCommand("appschema.usp_GetDigitalRecord", conn);
-
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@DigRecordID", DigRecordID);
-
-                    conn.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-
-                        if (reader.Read())
-                        {
-
-                            var DigRecordIDIndex = reader.GetOrdinal("DigSkivID");
-                            var DiscSizeIndex = reader.GetOrdinal("Storlek");
-                            var RecordIDIndex = reader.GetOrdinal("SkivID");
-
-                            return new DigitalRecord
-                            {
-
-                                DigRecordID = reader.GetInt32(DigRecordIDIndex),
-                                DiscSize = reader.GetString(DiscSizeIndex),
-                                RecordID = reader.GetInt32(RecordIDIndex)
-                            };
-
-                        }
-
-                    }
-
-                    return null;
-
-                }
-                catch
-                {
-
-
-                    throw new ApplicationException("An error occured while getting customers from the database.");
-                }
-            }
-
-        }
-
-        #endregion
-
-
+      
     }
 }

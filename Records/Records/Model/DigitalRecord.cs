@@ -8,7 +8,7 @@ namespace Records.Model
 {
     public class DigitalRecord
     {
-        public int DigRecordID { get; set; }
+        //public int DigRecordID { get; set; }
 
         [Required(ErrorMessage = "Storlek måste anges")]
         [StringLength(6, ErrorMessage = "Storlek får vara max 6 tecken")]

@@ -6,6 +6,8 @@
 
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 
+    <h1>Skivor</h1>
+
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
 
     <asp:Panel ID="UppdateMessagePanel" runat="server" Visible="false">
@@ -65,8 +67,10 @@
                  <%#: Item.Recordlabel %>
                  
             </dd>
-            
-
+            <br />
+            <dd>
+            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%#: GetRouteUrl("RecordDetails", new {id =Item.RecordID }) %>' Text="Mer Info"/>
+            </dd>
         </dl>
           
 

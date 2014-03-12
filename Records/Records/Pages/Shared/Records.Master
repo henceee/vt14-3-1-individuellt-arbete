@@ -23,7 +23,7 @@
                         <asp:HyperLink ID="HomeHyperLink" runat="server" NavigateUrl='<%$ RouteUrl:routename=Records %>' Text="Skivor"/>
                     </li>
                                             
-                       <li>Ny Skiva
+                       <li id="rightborder">Ny Skiva
                             <ul>
                                 <li>
                                <asp:HyperLink ID="DigitalHyperLink" runat="server" NavigateUrl='<%$ RouteUrl:routename=NewDigital %>' Text="Digital Skiva"/>   

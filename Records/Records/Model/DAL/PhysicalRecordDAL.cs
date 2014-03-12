@@ -33,12 +33,12 @@ namespace Records.Model.DAL
                     cmd.Parameters.Add("@Dateofpurchase", SqlDbType.Date).Value = physrecord.DateofPurchase;
                     cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = physrecord.RecordID;
 
-                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Direction = ParameterDirection.Output;                  
+                    //cmd.Parameters.Add("@RecordID", SqlDbType.Int).Direction = ParameterDirection.Output;                  
                     
                     conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    physrecord.PhysRecordID = (int)cmd.Parameters["@PhysRecordID"].Value;
+                    //physrecord.PhysRecordID = (int)cmd.Parameters["@PhysRecordID"].Value;
 
 
                 }
@@ -72,9 +72,8 @@ namespace Records.Model.DAL
 
                     SqlCommand cmd = new SqlCommand("appschema.usp_UpdatePhyscialRecord", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-
-
-                    cmd.Parameters.Add("@PhysRecordID", SqlDbType.Int).Value = physrecord.PhysRecordID;
+                    
+                    
                     cmd.Parameters.Add("@Priceatpurchase", SqlDbType.Decimal).Value = physrecord.PriceAtPurchase;
                     cmd.Parameters.Add("@Dateofpurchas", SqlDbType.Date).Value = physrecord.DateofPurchase;
                     cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = physrecord.RecordID;                  
@@ -127,7 +126,7 @@ namespace Records.Model.DAL
                     {
                         if (reader.Read())
                         {
-                            var PhysRecordIDIndex = reader.GetOrdinal("FysSkivID");
+                            
                             var PriceAtPurchaseIndex = reader.GetOrdinal("Inköpspris");
                             var DateofPurchaseIndex = reader.GetOrdinal("Inköpsdatum");
                             var RecordIDIndex = reader.GetOrdinal("SkivID");
@@ -135,7 +134,7 @@ namespace Records.Model.DAL
 
                             return new PhysicalRecord
                              {
-                                 PhysRecordID = reader.GetInt32(PhysRecordIDIndex),
+                                 
                                  PriceAtPurchase = reader.GetDecimal(PriceAtPurchaseIndex),
                                  DateofPurchase = reader.GetDateTime(DateofPurchaseIndex),
                                  RecordID = reader.GetInt32(RecordIDIndex)
@@ -161,72 +160,8 @@ namespace Records.Model.DAL
 
         #endregion
 
-        /// <summary>
-        ///  /// GetPhysicalRecordByID
-        /// Hämtar ut en specifik skiva ur tabellen Digital Skiva, med hjälp av
-        /// FysSkivID (PhysRecordID)
-        /// </summary>
-        /// <param name="RecordID"></param>
-        /// <returns></returns>
+    
 
-        #region GetPhysicalRecordByID
-
-        public PhysicalRecord GetPhysicalRecordByID(int PhysRecordID)
-        {
-                      
-            using (var conn = CreateConnection())
-            {
-
-                try
-                {
-
-                    SqlCommand cmd = new SqlCommand("appschema.usp_GetPhysicalRecord", conn);
-
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@PhysRecordID", PhysRecordID);
-
-                    conn.Open();
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-
-                        if (reader.Read())
-                        {
-
-                            var PhysRecordIDIndex = reader.GetOrdinal("FysSkivID");
-                            var PriceAtPurchaseIndex = reader.GetOrdinal("Inköpspris");
-                            var DateofPurchaseIndex = reader.GetOrdinal("Inköpsdatum");
-                            var RecordIDIndex = reader.GetOrdinal("SkivID");
-
-                            return new PhysicalRecord
-                            {
-                                PhysRecordID = reader.GetInt32(PhysRecordIDIndex),
-                                PriceAtPurchase = reader.GetDecimal(PriceAtPurchaseIndex),
-                                DateofPurchase = reader.GetDateTime(DateofPurchaseIndex),
-                                RecordID = reader.GetInt32(RecordIDIndex)
-
-
-                            };
-
-                        }
-
-                    }
-
-                    return null;
-
-                }
-                catch
-                {
-
-
-                    throw new ApplicationException("An error occured while getting customers from the database.");
-                }
-            }
-
-        }
-
-        #endregion
-
+       
     }
 }

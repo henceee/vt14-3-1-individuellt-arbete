@@ -13,6 +13,24 @@ namespace Records.Pages.RecordPages {
     public partial class Details {
         
         /// <summary>
+        /// UppdateMessagePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel UppdateMessagePanel;
+        
+        /// <summary>
+        /// UppdateMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal UppdateMessage;
+        
+        /// <summary>
         /// FormView1 control.
         /// </summary>
         /// <remarks>
@@ -20,5 +38,41 @@ namespace Records.Pages.RecordPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FormView FormView1;
+        
+        /// <summary>
+        /// FormView2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FormView FormView2;
+        
+        /// <summary>
+        /// FormView3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FormView FormView3;
+        
+        /// <summary>
+        /// DeleteHyperLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink DeleteHyperLink;
+        
+        /// <summary>
+        /// ReturnHyperLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink ReturnHyperLink;
     }
 }
