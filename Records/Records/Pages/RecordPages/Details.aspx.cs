@@ -44,6 +44,7 @@ namespace Records.Pages.RecordPages
         {
             DeleteHyperLink.NavigateUrl = GetRouteUrl("RecordDelete", new { id = Id });
             ReturnHyperLink.NavigateUrl = GetRouteUrl("Records", null);
+            EditHyperLink.NavigateUrl = GetRouteUrl("EditRecord", new { id = Id });
 
             if (Session["SucessMessage"] != null)
             {

@@ -10,8 +10,7 @@ background-color:#C5E4FD;
 #menu ul {
 
     float: left;    
-    list-style: none;     
-    margin-bottom: 50%;
+    list-style: none;         
     margin-left: 20%;
     
 }
@@ -95,10 +94,10 @@ background-color:#C5E4FD;
 
     float: left;
     margin-top: 1%;
-    margin-left: -25%;
-    
+    margin-left: 30%;
+          
 }
-
+        
 #border {
 
 border-left: 1px solid #4D91C9;
@@ -120,6 +119,7 @@ dt a {
 dt {
 
     background-color: #C5E4FD;
+    
 
 }
 
@@ -131,3 +131,17 @@ dd a{
     background-color: #C5E4FD;
 }
 
+input {
+
+    
+    margin-bottom: 10%;
+    margin-top: 10%;
+    display: block;
+}
+
+label {
+
+    float: left;
+    margin-bottom: 1%;
+
+}

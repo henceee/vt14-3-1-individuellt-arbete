@@ -1,25 +1,20 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Records.Master" AutoEventWireup="true" CodeBehind="NewPhysical.aspx.cs" Inherits="Records.Pages.RecordPages.NewPhysical" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Records.Master" AutoEventWireup="true" CodeBehind="EditRecord.aspx.cs" Inherits="Records.Pages.RecordPages.EditRecord" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    
-<h1>Ny Fysisk Skiva</h1>
-
-    <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
 
     <asp:FormView ID="FormView1" runat="server"
         ItemType="Records.Model.Record"
-        DataKeyNames="RecordID"
-        InsertMethod="FormView1_InsertItem"
-        DefaultMode="Insert" 
+        DataKeyNames="RecordID"      
+        DefaultMode="Edit"
+        UpdateMethod="FormView1_UpdateItem" 
         RenderOuterTable="false">
 
-         <InsertItemTemplate>
+        <EditItemTemplate>
 
-            <%-- TITEL --%>
+              <%-- TITEL --%>
 
             <asp:Label ID="Label1" runat="server" AssociatedControlID="TitleTextBox" Text="Titel"></asp:Label><br />
            
@@ -62,35 +57,15 @@
             <asp:TextBox ID="RecordLabelTextBox" runat="server" Text='<%#: BindItem.Recordlabel %>' MaxLength="20"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" Text="*" ErrorMessage="Skivbolag måste anges!" ControlToValidate="RecordLabelTextBox"></asp:RequiredFieldValidator>
 
-
-
-             <%-- Inköpspris --%>
-
-             <asp:Label ID="Label6" runat="server" AssociatedControlID="PriceTextBox" Text="Inköpspris"></asp:Label>
-
-             <asp:TextBox ID="PriceTextBox" runat="server" MaxLength="6"></asp:TextBox>
-
-             <asp:RequiredFieldValidator runat="server" ControlToValidate="PriceTextBox" Text="*"
-                 ErrorMessage="Ange ett inköpspris"></asp:RequiredFieldValidator>
-             <asp:RegularExpressionValidator runat="server" ControlToValidate="PriceTextBox" Text="*"
-                 ErrorMessage="Ange inköpspriset som ett flytal med högst 4 tal följt av två decimaler" ValidationExpression="^[0-9]{1,4}[.][0-9]{2}$"></asp:RegularExpressionValidator>
-            
-              <%-- Inköpsdatum --%>
-
-             <asp:Label ID="Label7" runat="server" AssociatedControlID="PurchaseDateTextBox" Text="Inköpsdatum"></asp:Label>
-
-             <asp:TextBox ID="PurchaseDateTextBox" runat="server"></asp:TextBox>
-             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="PurchaseDateTextBox" Text="*"
-                 ErrorMessage=""></asp:RequiredFieldValidator>
-              <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" Text="*"
-                  ErrorMessage="Inköpsdatum måste kunna tolkas som ett giltigt datum." ControlToValidate="PurchaseDateTextBox"
-                ValidationExpression="^(19|20)\d\d([-/.])(0?[1-9]|1[012])\2(0?[1-9]|[12][0-9]|3[01])$"></asp:RegularExpressionValidator>
-
-              <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Insert" Text="Spara"/>
-                          
-             </InsertItemTemplate>
+        </EditItemTemplate>
 
     </asp:FormView>
 
+    <fieldset>
+            <legend>Övriga uppgifter</legend>
+
+        <asp:FormView ID="FormView2" runat="server"></asp:FormView>
+
+    </fieldset>
 
 </asp:Content>

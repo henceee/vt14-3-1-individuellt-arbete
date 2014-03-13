@@ -74,8 +74,7 @@ namespace Records.Model.DAL
 
         public void SavePhysicalRecord(PhysicalRecord record)
         {
-            //TODO: ÄNDRA OCH IMPLEMENTERA  SavePhysicalRecord
-            //OBS VÄNTA TILL SIST MED NEDANSTÅENDE:
+         
 
             /*ICollection<ValidationResult> validationResults;
             if(!customer.Validate(out validationResults){
@@ -86,21 +85,33 @@ namespace Records.Model.DAL
             }
              */
 
-            //Om skivID är noll, så finns inte posten redan och då ska en ny post skapas.
-
-            if (record.RecordID == 0)
-            {
+            
+        
                 PhysicalRecordDAL.InsertPhysicalRecord(record);
 
+          
+
+        }
+
+        #endregion
+
+        #region UpdatePhysicalRecord
+
+        public void UpdatePhysicalRecord(PhysicalRecord physrecord) {
+
+            
+
+            /*ICollection<ValidationResult> validationResults;
+            if(!customer.Validate(out validationResults){
+            
+             var ex = new ValidationException("Objektet klarade inte valideringen.");
+                ex.Data.Add("ValidationResults", validationResults);
+                throw ex;
             }
+             */
 
-                //Annars ska den befintliga posten uppdateras.
-
-            else
-            {
-                PhysicalRecordDAL.UpdatePhysicalRecord(record);
-            }
-
+            PhysicalRecordDAL.UpdatePhysicalRecord(physrecord);
+        
         }
 
         #endregion
@@ -143,8 +154,7 @@ namespace Records.Model.DAL
         /// </summary>
         /// <param name="digrecord"></param>
         /// 
-
-      
+              
 
         #region SaveDigitalRecord
 
@@ -162,25 +172,40 @@ namespace Records.Model.DAL
             }
              */
 
-            //Om skivID är noll, så finns inte posten redan och då ska en ny post skapas.
-
-            if (digrecord.RecordID == 0)
-            {
+            
                 DigitalRecordDAL.InsertDigitalRecord(digrecord);
 
-            }
-
-                //Annars ska den befintliga posten uppdateras.
-
-            else
-            {
-                DigitalRecordDAL.UpdateDigitalRecord(digrecord);
-            }
-
+          
         }
 
         #endregion
 
+        /// <summary>
+        /// UpdateDigitalRecord
+        /// Uppdaterar en skiva m. hjälp av en referens till ett DigitalRecord-obj.      
+        /// </summary>
+        /// <param name="digrecord"></param>
+
+        #region UpdateDigitalRecord
+
+        public void UpdateDigitalRecord(DigitalRecord digrecord)
+        {
+
+            //OBS VÄNTA TILL SIST MED NEDANSTÅENDE:
+
+            /*ICollection<ValidationResult> validationResults;
+            if(!customer.Validate(out validationResults){
+            
+             var ex = new ValidationException("Objektet klarade inte valideringen.");
+                ex.Data.Add("ValidationResults", validationResults);
+                throw ex;
+            }
+             */
+
+            DigitalRecordDAL.UpdateDigitalRecord(digrecord);
+        }
+
+        #endregion
 
 
         #endregion
@@ -297,6 +322,33 @@ namespace Records.Model.DAL
 
         #endregion
 
+
+        /// <summary>
+        /// UpdateRecord
+        /// Uppdaterar en skiva m. hjälp av en referens till ett DigitalRecord-obj.      
+        /// </summary>
+        /// <param name="digrecord"></param>
+
+        #region UpdateRecord
+
+        //public void UpdateRecord(DigitalRecord digrecord)
+        //{
+
+        //    //OBS VÄNTA TILL SIST MED NEDANSTÅENDE:
+
+        //    /*ICollection<ValidationResult> validationResults;
+        //    if(!customer.Validate(out validationResults){
+            
+        //     var ex = new ValidationException("Objektet klarade inte valideringen.");
+        //        ex.Data.Add("ValidationResults", validationResults);
+        //        throw ex;
+        //    }
+        //     */
+
+        //    DigitalRecordDAL.UpdateDigitalRecord(digrecord);
+        //}
+
+        #endregion
 
         #endregion
 

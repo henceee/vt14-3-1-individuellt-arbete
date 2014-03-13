@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\MasterStyleSheet.css" />
+    <Content Include="Content\Reset.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
@@ -143,6 +144,7 @@
     <Content Include="Global.asax" />
     <Content Include="Pages\RecordPages\Delete.aspx" />
     <Content Include="Pages\RecordPages\Details.aspx" />
+    <Content Include="Pages\RecordPages\EditRecord.aspx" />
     <Content Include="Pages\RecordPages\List.aspx" />
     <Content Include="Pages\RecordPages\NewDigital.aspx" />
     <Content Include="Pages\RecordPages\NewPhysical.aspx" />
@@ -209,6 +211,13 @@
     </Compile>
     <Compile Include="Pages\RecordPages\Details.aspx.designer.cs">
       <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RecordPages\EditRecord.aspx.cs">
+      <DependentUpon>EditRecord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RecordPages\EditRecord.aspx.designer.cs">
+      <DependentUpon>EditRecord.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\RecordPages\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>

@@ -15,6 +15,8 @@ namespace Records
             routes.MapPageRoute("RecordDelete",     "skivor/{id}/tabort",       "~/Pages/RecordPages/Delete.aspx");
             routes.MapPageRoute("NewDigital",       "skivor/ny/digital",        "~/Pages/RecordPages/NewDigital.aspx");
             routes.MapPageRoute("NewPhysical",      "skivor/ny/fysisk",         "~/Pages/RecordPages/NewPhysical.aspx");
+            routes.MapPageRoute("EditRecord",       "skivor/{id}/redigera",     "~/Pages/RecordPages/EditRecord.aspx");
+        
         }
     }
 }

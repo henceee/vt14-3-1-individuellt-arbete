@@ -6,6 +6,8 @@
 
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 
+    <div id="recordlist">
+
     <h1>Skivor</h1>
 
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
@@ -31,6 +33,7 @@
 
     </LayoutTemplate>
 
+    
     <ItemTemplate>       
        
         <dl class="Recordinfo">
@@ -84,5 +87,5 @@
 
 
 </asp:ListView>
-
+        </div>
 </asp:Content>

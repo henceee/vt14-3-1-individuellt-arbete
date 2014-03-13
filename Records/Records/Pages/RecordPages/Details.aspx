@@ -22,6 +22,7 @@
 
     
         <ItemTemplate>
+            
 
             <h1> <%#: Item.Title %> </h1>
 
@@ -58,12 +59,17 @@
         </ItemTemplate>
     </asp:FormView>
 
+    <fieldset>
+            <legend>Övriga uppgifter</legend>
+
     <asp:FormView ID="FormView2" runat="server"
         ItemType="Records.Model.DigitalRecord"
         DataKeyNames="RecordID"
         SelectMethod="FormView2_GetItem">
 
         <ItemTemplate>
+            
+            
 
             <dd>
                 <b>Skivtyp:</b>
@@ -79,7 +85,7 @@
               
             </dd>
             
-            
+            </fieldset>
             
         </ItemTemplate>
   
@@ -93,7 +99,7 @@
         SelectMethod="FormView3_GetItem">
 
         <ItemTemplate>
-
+            
              <dd>
                 <b>Skivtyp:</b>
             </dd>
@@ -118,10 +124,15 @@
         </ItemTemplate>
 
     </asp:FormView>
+
+    </fieldset>
+
     <br />
                 <asp:HyperLink ID="DeleteHyperLink" runat="server" Text="Ta bort"/>
            
                 <asp:HyperLink ID="ReturnHyperLink" runat="server"  Text="Tillbaka"/>
+
+                <asp:HyperLink ID="EditHyperLink" runat="server" Text="Redigera" />
             
 
 </asp:Content>

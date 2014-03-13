@@ -226,7 +226,7 @@ namespace Records.Model.DAL
                     conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    record.RecordID = (int)cmd.Parameters["@ContactID"].Value;
+                    record.RecordID = (int)cmd.Parameters["@RecordID"].Value;
 
 
                 }
@@ -258,12 +258,6 @@ namespace Records.Model.DAL
 
                 try
                 {
-//                    @Title varchar(30) = ' ',
-//@Artist varchar(20) = ' ',
-//@Playtime varchar(6)= ' ',
-//@Releasedate date='1900-01-01',
-//@Recordlabel varchar(20)= ' ',
-//@RecordID int OUTPUT
 
                     SqlCommand cmd = new SqlCommand("appschema.usp_InsertRecordTypeIDDigital", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
