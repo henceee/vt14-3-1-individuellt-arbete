@@ -218,7 +218,7 @@ namespace Records.Model.DAL
                     cmd.Parameters.Add("@Artist", SqlDbType.VarChar, 20).Value = record.Artist;
                     cmd.Parameters.Add("@Playtime", SqlDbType.VarChar, 6).Value = record.Playtime;
                     cmd.Parameters.Add("@Releasedate", SqlDbType.Date).Value = record.Releasedate;
-
+                    cmd.Parameters.Add("@Recordlabel", SqlDbType.VarChar, 20).Value = record.Recordlabel;
                     cmd.Parameters.Add("@RecordID", SqlDbType.Int).Direction = ParameterDirection.Output;
 
 
@@ -315,6 +315,7 @@ namespace Records.Model.DAL
                     cmd.Parameters.Add("@Artist", SqlDbType.VarChar, 20).Value = record.Artist;
                     cmd.Parameters.Add("@Playtime", SqlDbType.VarChar, 6).Value = record.Playtime;
                     cmd.Parameters.Add("@Releasedate", SqlDbType.Date).Value = record.Releasedate;
+                    cmd.Parameters.Add("@Recordlabel", SqlDbType.VarChar, 20).Value = record.Recordlabel;
                                        
                     conn.Open();
                     cmd.ExecuteNonQuery();                    
@@ -323,7 +324,6 @@ namespace Records.Model.DAL
                 }
                 catch
                 {
-
                     throw new ApplicationException("An error occured while getting customers from the database.");
                 }
             }

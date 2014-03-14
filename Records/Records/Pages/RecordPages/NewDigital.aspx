@@ -74,8 +74,8 @@
             <asp:Label ID="Label1" runat="server" AssociatedControlID="RecordLabelTextBox" Text="Storlek"></asp:Label>
             
             <asp:TextBox ID="DiscSizeTextBox" runat="server" MaxLength="6"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" ControlToValidate="DiscSizeTextBox" Text="*" ErrorMessage="Storlek måste anges"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator runat="server" ControlToValidate="DiscSizeTextBox" Text="*"
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DiscSizeTextBox" Text="*" ErrorMessage="Storlek måste anges"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="DiscSizeTextBox" Text="*"
                 ErrorMessage="Ange storlek i rätt format! T.ex 1 gb, eller 1gb"
                 ValidationExpression='^[1-9][0-9]?[0-9]?\s?[a-z]{2}$'></asp:RegularExpressionValidator>
             

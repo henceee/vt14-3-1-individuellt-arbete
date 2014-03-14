@@ -12,7 +12,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 
      <asp:Panel ID="UppdateMessagePanel" runat="server" Visible="false">
-            <p><asp:Literal ID="UppdateMessage" runat="server">Kontakten {0}</asp:Literal></p>
+            <p><asp:Literal ID="UppdateMessage" runat="server">Skivan {0}</asp:Literal></p>
         </asp:Panel>
 
     <asp:FormView ID="FormView1" runat="server"
@@ -85,7 +85,7 @@
               
             </dd>
             
-            </fieldset>
+            
             
         </ItemTemplate>
   

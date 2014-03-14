@@ -73,8 +73,8 @@ namespace Records.Model.DAL
 
                     SqlCommand cmd = new SqlCommand("appschema.usp_UpdateDigitalRecord", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                                    
-                    cmd.Parameters.Add("@Playtime", SqlDbType.VarChar, 6).Value = digrecord.DiscSize;
+
+                    cmd.Parameters.Add("@Discsize", SqlDbType.VarChar, 6).Value = digrecord.DiscSize;
                     cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = digrecord.RecordID;  
                    
 
