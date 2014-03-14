@@ -162,12 +162,12 @@
         
              <asp:Label ID="Label6" runat="server" AssociatedControlID="PriceTextBox" Text="Inköpspris"></asp:Label>
 
-             <asp:TextBox ID="PriceTextBox" runat="server" MaxLength="6" Text='<%#: BindItem.PriceAtPurchase %>'></asp:TextBox>
+             <asp:TextBox ID="PriceTextBox" runat="server" MaxLength="6" Text='<%#: Item.PriceAtPurchase %>'></asp:TextBox>
 
              <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="PriceTextBox" Text="*"
                  ErrorMessage="Ange ett inköpspris"></asp:RequiredFieldValidator>
-             <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="PriceTextBox" Text="*"
-                 ErrorMessage="Ange inköpspriset som ett flytal med högst 4 tal följt av två decimaler" ValidationExpression="^[0-9]{1,4}[.][0-9]{2}$"></asp:RegularExpressionValidator>
+            <%-- <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="PriceTextBox" Text="*"
+                 ErrorMessage="Ange inköpspriset som ett flytal med högst 4 tal följt av två decimaler" ValidationExpression="^[0-9]{1,4}[.][0-9]{2}$"></asp:RegularExpressionValidator>--%>
             
               <%-- Inköpsdatum --%> 
 

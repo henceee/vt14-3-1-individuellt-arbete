@@ -87,8 +87,9 @@ namespace Records.Pages.RecordPages
                     //var Price = decimal.Parse(pricevalue, CultureInfo.InvariantCulture);
                     //var Purchasedate = DateTime.Parse(((TextBox)FormView1.FindControl("PurchaseDateTextBox")).Text);
 
-                    var ReleaseDate = DateTime.Parse(((TextBox)FormView1.FindControl("ReleaseDateTextBox")).Text);
+                    var ReleaseDate = DateTime.Parse(((TextBox)FormView1.FindControl("ReleaseDateTextBox")).Text);                   
 
+                    
                     record.Releasedate = ReleaseDate;
                     Service.SaveRecord(record);
                     Session["success"] = true;
@@ -182,8 +183,10 @@ namespace Records.Pages.RecordPages
                 if (TryUpdateModel(physrecord))
                 {
                     var DateofPurchase = DateTime.Parse(((TextBox)FormView1.FindControl("PurchaseDateTextBox")).Text);
+                    var PriceAtPurchase = Decimal.Parse(((TextBox)FormView1.FindControl("PriceTextBox")).Text);
 
                     physrecord.DateofPurchase = DateofPurchase;
+                    physrecord.PriceAtPurchase = PriceAtPurchase;
 
                     Service.UpdatePhysicalRecord(physrecord);
                     Session["sucessMessage"] = "Övriga Uppgifter uppdaterades.";
