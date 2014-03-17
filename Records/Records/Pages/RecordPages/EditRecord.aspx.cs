@@ -1,6 +1,7 @@
 ﻿using Records.Model.DAL;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.ModelBinding;
@@ -82,10 +83,6 @@ namespace Records.Pages.RecordPages
 
                 if (TryUpdateModel(record))
                 {
-                    //var pricevalue = ((TextBox)FormView1.FindControl("PriceTextBox")).Text;
-
-                    //var Price = decimal.Parse(pricevalue, CultureInfo.InvariantCulture);
-                    //var Purchasedate = DateTime.Parse(((TextBox)FormView1.FindControl("PurchaseDateTextBox")).Text);
 
                     var ReleaseDate = DateTime.Parse(((TextBox)FormView1.FindControl("ReleaseDateTextBox")).Text);                   
 
@@ -102,7 +99,7 @@ namespace Records.Pages.RecordPages
             }
             catch (Exception)
             {
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kunduppgiften skulle uppdateras.");
+                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då uppgifterna skulle uppdateras.");
             }
 
 
@@ -144,7 +141,7 @@ namespace Records.Pages.RecordPages
             }
             catch (Exception)
             {
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kunduppgiften skulle uppdateras.");
+                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då uppgifterna skulle uppdateras.");
             }
         }
 
@@ -182,11 +179,32 @@ namespace Records.Pages.RecordPages
 
                 if (TryUpdateModel(physrecord))
                 {
-                    var DateofPurchase = DateTime.Parse(((TextBox)FormView1.FindControl("PurchaseDateTextBox")).Text);
-                    var PriceAtPurchase = Decimal.Parse(((TextBox)FormView1.FindControl("PriceTextBox")).Text);
+                    /* 
+                      var pricevalue = ((TextBox)FormView1.FindControl("PriceTextBox")).Text;
 
-                    physrecord.DateofPurchase = DateofPurchase;
-                    physrecord.PriceAtPurchase = PriceAtPurchase;
+                    var Price = decimal.Parse(pricevalue, CultureInfo.InvariantCulture);
+                    var Purchasedate = DateTime.Parse(((TextBox)FormView1.FindControl("PurchaseDateTextBox")).Text);
+                    
+                    var physrecord = new PhysicalRecord
+                    {
+                            
+                        RecordID = record.RecordID,
+                        PriceAtPurchase =  Price,
+                        DateofPurchase = Purchasedate
+
+                        
+                    };
+                    Service.SavePhysicalRecord(physrecord);*/
+
+                    //var DateofPurchase = DateTime.Parse(((TextBox)FormView3.FindControl("PurchaseDateTextBox")).Text);
+                    //var Price= ((TextBox)FormView3.FindControl("PriceTextBox")).Text;
+
+                    //var PriceAtPurchase = decimal.Parse(Price, CultureInfo.InvariantCulture);                   
+
+                   
+                    //physrecord.DateofPurchase = DateofPurchase;
+                    //physrecord.PriceAtPurchase = PriceAtPurchase;
+                   
 
                     Service.UpdatePhysicalRecord(physrecord);
                     Session["sucessMessage"] = "Övriga Uppgifter uppdaterades.";
@@ -200,7 +218,7 @@ namespace Records.Pages.RecordPages
             }
             catch (Exception)
             {
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kunduppgiften skulle uppdateras.");
+                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då uppgifterna skulle uppdateras.");
             }
         }
 

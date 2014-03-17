@@ -75,7 +75,7 @@ namespace Records.Model.DAL
                     
                     
                     cmd.Parameters.Add("@Priceatpurchase", SqlDbType.Decimal).Value = physrecord.PriceAtPurchase;
-                    cmd.Parameters.Add("@Dateofpurchas", SqlDbType.Date).Value = physrecord.DateofPurchase;
+                    cmd.Parameters.Add("@Dateofpurchase", SqlDbType.Date).Value = physrecord.DateofPurchase;
                     cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = physrecord.RecordID;                  
                     
                     conn.Open();
@@ -86,7 +86,7 @@ namespace Records.Model.DAL
                 catch
                 {
 
-                    throw new ApplicationException("An error occured while getting customers from the database.");
+                    throw new ApplicationException("An error occured while getting records from the database.");
                 }
             }
 

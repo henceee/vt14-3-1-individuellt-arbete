@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -72,24 +73,20 @@ namespace Records.Model.DAL
 
         #region SavePhysicalRecord
 
-        public void SavePhysicalRecord(PhysicalRecord record)
+        public void SavePhysicalRecord(PhysicalRecord physrecord)
         {
-         
 
-            /*ICollection<ValidationResult> validationResults;
-            if(!customer.Validate(out validationResults){
+
+            ICollection<ValidationResult> validationResults;
+            if(!physrecord.Validate(out validationResults)){
             
              var ex = new ValidationException("Objektet klarade inte valideringen.");
                 ex.Data.Add("ValidationResults", validationResults);
                 throw ex;
             }
-             */
-
-            
-        
-                PhysicalRecordDAL.InsertPhysicalRecord(record);
-
-          
+             
+                    
+                PhysicalRecordDAL.InsertPhysicalRecord(physrecord);                      
 
         }
 
@@ -159,22 +156,17 @@ namespace Records.Model.DAL
         #region SaveDigitalRecord
 
         public void SaveDigitalRecord(DigitalRecord digrecord)
-        {
+        {           
             
-            //OBS VÄNTA TILL SIST MED NEDANSTÅENDE:
-
-            /*ICollection<ValidationResult> validationResults;
-            if(!customer.Validate(out validationResults){
+            ICollection<ValidationResult> validationResults;
+            if(!digrecord.Validate(out validationResults)){
             
              var ex = new ValidationException("Objektet klarade inte valideringen.");
                 ex.Data.Add("ValidationResults", validationResults);
                 throw ex;
             }
-             */
-
-            
+                         
                 DigitalRecordDAL.InsertDigitalRecord(digrecord);
-
           
         }
 
@@ -276,17 +268,16 @@ namespace Records.Model.DAL
 
         public void SaveRecord(Record record) {
 
-            //VÄNTA TILL SIST MED DETTA!!
+           
+            ICollection<ValidationResult> ValidationResults;           
 
-            //ICollection<ValidationResult> ValidationResults;
+            if (!record.Validate(out ValidationResults))
+            {
 
-            //if (!contact.Validate(out ValidationResults))
-            //{
-
-            //    var ex = new ValidationException("Objektet klarade inte valideringen");
-            //    ex.Data.Add("ValidationResults", ValidationResults);
-            //    throw ex;
-            //}
+                var ex = new ValidationException("Objektet klarade inte valideringen");
+                ex.Data.Add("ValidationResults", ValidationResults);
+                throw ex;
+            }
 
             
             if (record.RecordID == 0)

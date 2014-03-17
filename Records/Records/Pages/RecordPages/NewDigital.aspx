@@ -6,11 +6,12 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-
+     <div id ="newrecord">
     <h1>Ny Digital Skiva</h1>
    
     <%--Skiva--%>
     
+   
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
     
         
@@ -28,7 +29,7 @@
 
             <asp:Label runat="server" AssociatedControlID="TitleTextBox" Text="Titel"></asp:Label><br />
            
-            <asp:TextBox ID="TitleTextBox" runat="server" Text='<%#: BindItem.Title %>' MaxLength="30" ></asp:TextBox>
+            <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# BindItem.Title %>' MaxLength="30" ></asp:TextBox>
             <asp:RequiredFieldValidator runat="server" ControlToValidate="TitleTextBox" Text="*" ErrorMessage="Titel måste Anges"></asp:RequiredFieldValidator>
           
           
@@ -36,7 +37,7 @@
 
             <asp:Label runat="server" AssociatedControlID="ArtistTextBox" Text="Artist"></asp:Label>
            
-            <asp:TextBox ID="ArtistTextBox" runat="server" Text='<%#: BindItem.Artist %>' MaxLength="20"></asp:TextBox>
+            <asp:TextBox ID="ArtistTextBox" runat="server" Text='<%# BindItem.Artist %>' MaxLength="20"></asp:TextBox>
             <asp:RequiredFieldValidator runat="server" ControlToValidate="ArtistTextBox" Text="*" ErrorMessage="Artist måste Anges"></asp:RequiredFieldValidator>
             
 
@@ -44,7 +45,7 @@
 
             <asp:Label runat="server" AssociatedControlID="PlaytimeTextBox" Text="Speltid"></asp:Label>
             
-            <asp:TextBox ID="PlaytimeTextBox" runat="server" Text='<%#: BindItem.Playtime %>' MaxLength="6"></asp:TextBox>
+            <asp:TextBox ID="PlaytimeTextBox" runat="server" Text='<%# BindItem.Playtime %>' MaxLength="6"></asp:TextBox>
             <asp:RequiredFieldValidator runat="server" ControlToValidate="PlaytimeTextBox" Text="*" ErrorMessage="Speltid måste Anges"></asp:RequiredFieldValidator>
             <asp:RegularExpressionValidator runat="server" Text="*" ErrorMessage="Ange speltid i formatet MM:SS eller MMM:SS" ControlToValidate="PlaytimeTextBox"
                 ValidationExpression="^[0-9]{2}[0-9]?[:][0-5][0-9]$"></asp:RegularExpressionValidator>
@@ -54,7 +55,7 @@
 
             <asp:Label runat="server" AssociatedControlID="ReleaseDateTextBox" Text="ReleaseDatum"></asp:Label>
           
-            <asp:TextBox ID="ReleaseDateTextBox" runat="server" Text='<%#: BindItem.Releasedate%>' MaxLength="10"></asp:TextBox>
+            <asp:TextBox ID="ReleaseDateTextBox" runat="server" Text='<%# BindItem.Releasedate%>' MaxLength="10"></asp:TextBox>
             <asp:RequiredFieldValidator runat="server" ControlToValidate="ReleaseDateTextBox" Text="*" ErrorMessage="Releasedatum måste anges!"></asp:RequiredFieldValidator>
             <asp:RegularExpressionValidator runat="server" Text="*" ErrorMessage="Releasedatum måste kunna tolkas som ett giltigt datum." ControlToValidate="ReleaseDateTextBox"
                 ValidationExpression="^(19|20)\d\d([-/.])(0?[1-9]|1[012])\2(0?[1-9]|[12][0-9]|3[01])$"></asp:RegularExpressionValidator>
@@ -64,7 +65,7 @@
 
             <asp:Label runat="server" AssociatedControlID="RecordLabelTextBox" Text="Skivbolag"></asp:Label>
             
-            <asp:TextBox ID="RecordLabelTextBox" runat="server" Text='<%#: BindItem.Recordlabel %>' MaxLength="20"></asp:TextBox>
+            <asp:TextBox ID="RecordLabelTextBox" runat="server" Text='<%# BindItem.Recordlabel %>' MaxLength="20"></asp:TextBox>
             <asp:RequiredFieldValidator runat="server" Text="*" ErrorMessage="Skivbolag måste anges!" ControlToValidate="RecordLabelTextBox"></asp:RequiredFieldValidator>
 
             
@@ -91,7 +92,7 @@
     </asp:FormView>
     
 
-
+    </div>
 
 </asp:Content>
 

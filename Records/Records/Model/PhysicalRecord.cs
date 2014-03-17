@@ -11,11 +11,11 @@ namespace Records.Model
         //public int PhysRecordID { get; set; }
 
         [Required(ErrorMessage = "Inköpspris måste anges")]
-        [RegularExpression(@"^[0-9]{1,4}[.][0-9]{2}$", ErrorMessage="Ange Priset som ett flytal med högst 4 tal följt av två decimaler")]
         public Decimal PriceAtPurchase  { get; set; }
         
         [Required(ErrorMessage = "Inköpsdatum måste anges")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString="yyyy-MM-dd", ApplyFormatInEditMode = true)]
         public DateTime DateofPurchase { get; set; }
 
         public int RecordID { get; set; }

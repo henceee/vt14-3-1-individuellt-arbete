@@ -70,7 +70,7 @@ namespace Records.Pages.RecordPages
             }
             catch (Exception)
             {
-                Page.ModelState.AddModelError(String.Empty, "Fel inträffade då kunden hämtades vid redigering.");
+                Page.ModelState.AddModelError(String.Empty, "Fel inträffade då skivan hämtades vid redigering.");
                 return null;
             }
         }

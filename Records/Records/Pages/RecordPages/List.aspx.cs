@@ -48,7 +48,7 @@ namespace Records.Pages.RecordPages
             catch (Exception)
             {
 
-                ModelState.AddModelError(String.Empty, "Fel inträffade då kunder hämtades.");
+                ModelState.AddModelError(String.Empty, "Fel inträffade då skivorna hämtades.");
                 return null;
             }
         }

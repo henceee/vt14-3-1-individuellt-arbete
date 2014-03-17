@@ -24,7 +24,8 @@ namespace Records.Model
         public string Playtime { get; set; }
 
         [Required(ErrorMessage = "Releasedatum måste anges")]
-        [DataType(DataType.Date, ErrorMessage = "Releasedatum måste kunna tolkas som ett giltigt datum.")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true)]
         public DateTime Releasedate { get; set; }
 
 
