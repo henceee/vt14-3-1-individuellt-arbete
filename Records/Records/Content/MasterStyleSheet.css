@@ -1,4 +1,7 @@
-﻿html {
+﻿
+
+
+html {
 
 background: rgb(207,231,250); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(207,231,250,1) 0%, rgba(99,147,193,1) 100%); /* FF3.6+ */
@@ -9,17 +12,15 @@ background: -ms-linear-gradient(top, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 1
 background: linear-gradient(to bottom, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* W3C */
 }
 
+/*Menyn*/
 
-#menu {
+#menu, #menu li {
 
 
- height:30px;
- width: 50%;
- margin-left: 20%;
+height:30px;
+width: 50%;
+margin-left: 20%;
 
-}
-
-#menu, ul, li {
 background: rgb(207,231,250); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(207,231,250,1) 0%, rgba(99,147,193,1) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(207,231,250,1)), color-stop(100%,rgba(99,147,193,1))); /* Chrome,Safari4+ */
@@ -28,106 +29,110 @@ background: -o-linear-gradient(top, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 10
 background: -ms-linear-gradient(top, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* IE10+ */
 background: linear-gradient(to bottom, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* W3C */
 
+}
 
+#menu li:hover {
+
+background: #d0e4f7; /* Old browsers */
+background: -moz-linear-gradient(top, #d0e4f7 0%, #73b1e7 24%, #0a77d5 50%, #539fe1 79%, #87bcea 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d0e4f7), color-stop(24%,#73b1e7), color-stop(50%,#0a77d5), color-stop(79%,#539fe1), color-stop(100%,#87bcea)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #d0e4f7 0%,#73b1e7 24%,#0a77d5 50%,#539fe1 79%,#87bcea 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #d0e4f7 0%,#73b1e7 24%,#0a77d5 50%,#539fe1 79%,#87bcea 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #d0e4f7 0%,#73b1e7 24%,#0a77d5 50%,#539fe1 79%,#87bcea 100%); /* IE10+ */
+background: linear-gradient(to bottom, #d0e4f7 0%,#73b1e7 24%,#0a77d5 50%,#539fe1 79%,#87bcea 100%); /* W3C */
 
 
 }
 
 #menu ul {
 
-    float: left;    
-    list-style: none;         
-    margin-left: 20%;
+float: left;    
+list-style: none;         
+margin-left: 20%;
     
 }
 
 #menu li {
 
-     display: block;
-     height:30px;
+    display: block;
+    height:30px;
+      
      
 }
 
 #menu a {
 
-    color: black;
-    text-decoration: none;
+color: black;
+text-decoration: none;
 
 }
 
+/*Dropdown under Ny Skiva*/
+
 #dropdown {
 
-    float:left;
-    margin: 0;
-    padding: 0;
+float:left;
+margin: 0;
+padding: 0;
 
 }
 
 #dropdown li {
 
     
-    float:left;
-    margin: 0;
-    padding:0 0 0 10px;
-    position: relative;
-    width: 200px;
-    
+float:left;
+margin: 0;
+padding:0 0 0 10px;
+position: relative;
+width: 200px;
+   
+
     
     
 }
 
 #dropdown li:hover {
 
-    background-color:#4D91C9;
-    color: white;
-    left: 1px;
+background-color:#4D91C9;
+color: white;
+left: 1px;
     
 
 }
 
 #dropdown li:hover a {
-        color: white;
+    color: white;
 }
 
 #dropdown ul {
     
-    display:none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    z-index: 500;
-    left: -1px;
-    top: 100%;
+display:none;
+margin: 0;
+padding: 0;
+position: absolute;
+z-index: 500;
+left: -1px;
+top: 100%;
     
 }
 
     
 #dropdown ul {
- position: absolute;
+position: absolute;
 }
 
 
 #dropdown li:hover ul {
- display: block;
+display: block;
  
 }
 
 #dropdown li:hover ul a{
-    color: white;
+color: white;
 }
 
-#content{
+/*Border för meny-knapparna*/
 
-    float: left;
-    /*margin-top: 1%;*/
-    margin-left: 20%;
-    width: 50%;
-    height: 100%;
-    background-color: white;
-    
-          
-}
-        
 #border {
 
 border-left: 1px solid #4D91C9;
@@ -135,47 +140,58 @@ border-right: 1px solid #4D91C9;
 }
 
 #rightborder {
-    border-right: 1px solid black;
+border-right: 1px solid #4D91C9;
 }
 
+
+
+/*Gäller för samtliga sidor*/
+
+#content{
+
+float: left;   
+margin-left: 20%;
+width: 50%;
+height: 100%;
+background-color: white;
+padding: 1% 0 20% 0;
+    
+          
+}
+        
+/*Description-list på startsidan, där alla skivor hämtas*/
 dt a {
 
-    color: black;
-    text-decoration: none;
-    padding: 0 0 0 10px;
-    margin-left: 20%;
+color: black;
+text-decoration: none;    
+margin-left: 20%;
     
     
 
 }
 dt {
 
-    background: rgb(207,231,250); /* Old browsers */
+background: rgb(207,231,250); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(207,231,250,1) 0%, rgba(99,147,193,1) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(207,231,250,1)), color-stop(100%,rgba(99,147,193,1))); /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(top, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* Chrome10+,Safari5.1+ */
 background: -o-linear-gradient(top, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* Opera 11.10+ */
 background: -ms-linear-gradient(top, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* IE10+ */
 background: linear-gradient(to bottom, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* W3C */
-
-    width: 30%;
-    margin-left: 20%;
-
-}
-
-dd {
-
-    margin-left: 25%;
+width: 40%;
+ 
 
 }
+
+
 
 dd a{
 
-    color: black;
-    text-decoration: none;
-    padding: 0 10px 0 10px;    
+color: black;
+text-decoration: none;
+padding: 0 10px 0 10px;    
    
-    background: rgb(207,231,250); /* Old browsers */
+background: rgb(207,231,250); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(207,231,250,1) 0%, rgba(99,147,193,1) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(207,231,250,1)), color-stop(100%,rgba(99,147,193,1))); /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(top, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* Chrome10+,Safari5.1+ */
@@ -184,55 +200,55 @@ background: -ms-linear-gradient(top, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 1
 background: linear-gradient(to bottom, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* W3C */
 }
 
+
+/*Inputs (finns på sidorna NewDigital och NewPhysical)*/
 input {
 
-    
-    margin-bottom: 10%;
-    margin-top: 10%;
-    display: block;
+
+margin-top: 1%;
+display: block;
+margin-bottom: 5%;
 }
+
+/*labels i formulären*/
 
 label {
 
-    float: left;
-    margin-bottom: 1%;
+float: left;
+margin-bottom: 1%;
 
 }
 
+/*Fieldset på Details sidan*/
 
+fieldset {
 
-#newrecord {
-
-margin-left: 20%;
-padding: 1% 10% 45% 0;
-
+width: 50%;
 
 }
 
-Input {
+/*marginal inom #content*/
 
-    margin-top: 1%;
-    margin-bottom: 5%;
-<<<<<<< HEAD
-=======
-}
-
-#recordlist h1 {
+#contentdiv, #error {
 
 margin-left: 20%;
 
+
+
 }
+
+ /*headern i masterpage*/
 
 img {
 
-    margin-left: 20%;
+margin-left: 20%;
 
 }
 
+/*extra padding på error-sidan*/
+
 #error {
 
-margin-left: 20%;
-margin-top: 10%;
-padding: 1% 10% 80% 0;
->>>>>>> Now or never..
+padding: 1% 0 40% 0;
+
 }

@@ -11,7 +11,7 @@ namespace Records.Model.DAL
     {
          /// <summary>
         /// InsertDigitalRecord
-        /// Lägger in information om en skiva i tabellen "Fysisk Skiva"  
+        /// Lägger in information om en skiva i tabellen "Digital Skiva"  
         /// m. hjälp av informationen ur referensen till ett DigitalRecord-obj.
         /// </summary>
         /// <param name="digrecord"></param>

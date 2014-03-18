@@ -10,7 +10,7 @@ namespace Records.Model.DAL
     public class PhysicalRecordDAL:DALBase
     {
        /// <summary>        
-        /// InsertDigitalRecord
+        /// InsertPhysicalRecord
         /// Lägger in information om en skiva i tabellen "Fysisk Skiva"  
         /// m. hjälp av informationen ur referensen till ett PhysicalRecord-obj.           
        /// </summary>
@@ -95,7 +95,7 @@ namespace Records.Model.DAL
         #endregion
 
         /// <summary>
-        /// GetDigitalRecordByRecordID
+        /// GetPhysicalRecordByRecordID
         /// Hämtar ut en specifik skiva ur tabellen Fysisk Skiva, med hjälp av
         /// Skivid(RecordID)
         /// </summary>   

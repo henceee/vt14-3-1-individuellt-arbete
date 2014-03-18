@@ -4,7 +4,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-
+    <div id="contentdiv">
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
 
     <asp:Panel ID="UppdateMessagePanel" runat="server" Visible="false">
@@ -186,5 +186,5 @@
         
 
     </fieldset>
-
+    </div>
 </asp:Content>

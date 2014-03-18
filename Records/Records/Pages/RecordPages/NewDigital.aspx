@@ -6,7 +6,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-     <div id ="newrecord">
+     <div id="contentdiv">
     <h1>Ny Digital Skiva</h1>
    
     <%--Skiva--%>

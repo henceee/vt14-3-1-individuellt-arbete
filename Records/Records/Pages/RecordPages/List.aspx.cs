@@ -22,8 +22,8 @@ namespace Records.Pages.RecordPages
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)        {
-           
 
+         
             if (Session["SucessMessage"] != null) {
 
                 UppdateMessage.Text = string.Format(UppdateMessage.Text, Message);

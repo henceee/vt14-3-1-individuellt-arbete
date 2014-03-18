@@ -5,7 +5,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <div id ="newrecord">
+   <div id="contentdiv">
 <h1>Ny Fysisk Skiva</h1>
      
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />

@@ -10,7 +10,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-
+    <div id="contentdiv">
      <asp:Panel ID="UppdateMessagePanel" runat="server" Visible="false">
             <p><asp:Literal ID="UppdateMessage" runat="server">Skivan {0}</asp:Literal></p>
         </asp:Panel>
@@ -133,7 +133,7 @@
                 <asp:HyperLink ID="ReturnHyperLink" runat="server"  Text="Tillbaka"/>
 
                 <asp:HyperLink ID="EditHyperLink" runat="server" Text="Redigera" />
-            
+            </div>
 
 </asp:Content>
 

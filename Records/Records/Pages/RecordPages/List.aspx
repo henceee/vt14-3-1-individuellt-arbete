@@ -6,7 +6,7 @@
 
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 
-    <div id="recordlist">
+    <div id="contentdiv">
 
     <h1>Skivor</h1>
 

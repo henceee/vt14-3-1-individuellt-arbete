@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     
-    <div id="error">
+   <div id="error">
 
     <p> Oops! Något gick fel. Vänligen försök igen!</p>
 
