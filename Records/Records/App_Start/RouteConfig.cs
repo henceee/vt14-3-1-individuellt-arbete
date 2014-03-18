@@ -17,6 +17,7 @@ namespace Records
             routes.MapPageRoute("NewDigital",       "skivor/ny/digital",        "~/Pages/RecordPages/NewDigital.aspx");
             routes.MapPageRoute("NewPhysical",      "skivor/ny/fysisk",         "~/Pages/RecordPages/NewPhysical.aspx");
             routes.MapPageRoute("EditRecord",       "skivor/{id}/redigera",     "~/Pages/RecordPages/EditRecord.aspx");
+            routes.MapPageRoute("Error  ",          "serverfel",                "~/Pages/Shared/Error.aspx");
         
         }
     }

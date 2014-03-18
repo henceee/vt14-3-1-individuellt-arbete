@@ -65,7 +65,7 @@ background: linear-gradient(to bottom, rgba(207,231,250,1) 0%,rgba(99,147,193,1)
 
 #dropdown li {
 
-    /*background-color: #C5E4FD;*/    
+    
     float:left;
     margin: 0;
     padding:0 0 0 10px;
@@ -157,14 +157,15 @@ background: -webkit-linear-gradient(top, rgba(207,231,250,1) 0%,rgba(99,147,193,
 background: -o-linear-gradient(top, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* Opera 11.10+ */
 background: -ms-linear-gradient(top, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* IE10+ */
 background: linear-gradient(to bottom, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* W3C */
-    width: 50%;
+
+    width: 30%;
     margin-left: 20%;
 
 }
 
 dd {
 
-    margin-left: 35%;
+    margin-left: 25%;
 
 }
 
@@ -212,4 +213,26 @@ Input {
 
     margin-top: 1%;
     margin-bottom: 5%;
+<<<<<<< HEAD
+=======
+}
+
+#recordlist h1 {
+
+margin-left: 20%;
+
+}
+
+img {
+
+    margin-left: 20%;
+
+}
+
+#error {
+
+margin-left: 20%;
+margin-top: 10%;
+padding: 1% 10% 80% 0;
+>>>>>>> Now or never..
 }

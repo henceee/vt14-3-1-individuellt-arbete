@@ -128,6 +128,7 @@
     <Content Include="Content\MasterStyleSheet.css" />
     <Content Include="Content\Reset.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Untitled-1.jpg" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
@@ -148,7 +149,7 @@
     <Content Include="Pages\RecordPages\List.aspx" />
     <Content Include="Pages\RecordPages\NewDigital.aspx" />
     <Content Include="Pages\RecordPages\NewPhysical.aspx" />
-    <Content Include="Pages\Shared\DigitalRecordDetails.ascx" />
+    <Content Include="Pages\Shared\Error.aspx" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
@@ -241,19 +242,19 @@
     <Compile Include="Pages\RecordPages\NewPhysical.aspx.designer.cs">
       <DependentUpon>NewPhysical.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Shared\DigitalRecordDetails.ascx.cs">
-      <DependentUpon>DigitalRecordDetails.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Shared\DigitalRecordDetails.ascx.designer.cs">
-      <DependentUpon>DigitalRecordDetails.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Shared\Records.Master.cs">
       <DependentUpon>Records.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Shared\Records.Master.designer.cs">
       <DependentUpon>Records.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Shared\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Shared\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
