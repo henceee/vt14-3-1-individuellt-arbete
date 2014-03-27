@@ -46,20 +46,17 @@ namespace Records.Pages.RecordPages
                     record.RecordTypeID = 1;
                     Service.SaveRecord(record);
 
-                    //var physrecord = new PhysicalRecord();
-
                     var pricevalue = ((TextBox)FormView1.FindControl("PriceTextBox")).Text;
 
+                    
                     var Price = decimal.Parse(pricevalue, CultureInfo.InvariantCulture);
                     var Purchasedate = DateTime.Parse(((TextBox)FormView1.FindControl("PurchaseDateTextBox")).Text);
                     
                     var physrecord = new PhysicalRecord
-                    {
-                            
+                    {                            
                         RecordID = record.RecordID,
                         PriceAtPurchase =  Price,
                         DateofPurchase = Purchasedate
-
                         
                     };
                     Service.SavePhysicalRecord(physrecord);

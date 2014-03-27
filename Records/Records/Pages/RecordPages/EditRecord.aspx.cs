@@ -133,8 +133,6 @@ namespace Records.Pages.RecordPages
                     Session["sucessMessage"] = "Övriga Uppgifter uppdaterades.";
                     Response.RedirectToRoute("EditRecord", new { id = digrecord.RecordID });
                     Context.ApplicationInstance.CompleteRequest();
-                    
-                    
 
                 }
 
@@ -179,32 +177,7 @@ namespace Records.Pages.RecordPages
 
                 if (TryUpdateModel(physrecord))
                 {
-                    /* 
-                      var pricevalue = ((TextBox)FormView1.FindControl("PriceTextBox")).Text;
-
-                    var Price = decimal.Parse(pricevalue, CultureInfo.InvariantCulture);
-                    var Purchasedate = DateTime.Parse(((TextBox)FormView1.FindControl("PurchaseDateTextBox")).Text);
-                    
-                    var physrecord = new PhysicalRecord
-                    {
-                            
-                        RecordID = record.RecordID,
-                        PriceAtPurchase =  Price,
-                        DateofPurchase = Purchasedate
-
-                        
-                    };
-                    Service.SavePhysicalRecord(physrecord);*/
-
-                    //var DateofPurchase = DateTime.Parse(((TextBox)FormView3.FindControl("PurchaseDateTextBox")).Text);
-                    //var Price= ((TextBox)FormView3.FindControl("PriceTextBox")).Text;
-
-                    //var PriceAtPurchase = decimal.Parse(Price, CultureInfo.InvariantCulture);                   
-
-                   
-                    //physrecord.DateofPurchase = DateofPurchase;
-                    //physrecord.PriceAtPurchase = PriceAtPurchase;
-                   
+                                    
 
                     Service.UpdatePhysicalRecord(physrecord);
                     Session["sucessMessage"] = "Övriga Uppgifter uppdaterades.";

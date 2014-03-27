@@ -266,7 +266,7 @@ namespace Records.Model.DAL
                 throw ex;
             }
 
-            
+
             if (record.RecordID == 0)
             {
                 //Är RecordTypeID (skivtypID) 1 så är det en FYSISK skiva...
@@ -285,11 +285,12 @@ namespace Records.Model.DAL
 
                 //RecordType får bara va antingen fysisk eller digital, så annars kastas ett undantag!
 
-                else {
+                else
+                {
 
                     throw new ApplicationException();
                 }
-                
+
             }
             else
             {

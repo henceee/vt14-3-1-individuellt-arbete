@@ -143,6 +143,7 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\RecordPages\AddInfo.aspx" />
     <Content Include="Pages\RecordPages\Delete.aspx" />
     <Content Include="Pages\RecordPages\Details.aspx" />
     <Content Include="Pages\RecordPages\EditRecord.aspx" />
@@ -200,6 +201,13 @@
     <Compile Include="Model\DAL\RecordDAL.cs" />
     <Compile Include="Model\DAL\Service.cs" />
     <Compile Include="Model\Record.cs" />
+    <Compile Include="Pages\RecordPages\AddInfo.aspx.cs">
+      <DependentUpon>AddInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RecordPages\AddInfo.aspx.designer.cs">
+      <DependentUpon>AddInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RecordPages\Delete.aspx.cs">
       <DependentUpon>Delete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

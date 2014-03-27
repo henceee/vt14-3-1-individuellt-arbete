@@ -14,7 +14,8 @@
     <form id="form1" runat="server">
     <div>
         <header>
-            <img src="../../Content/Untitled-1.jpg" />
+           <div id="headerpic"></div>
+           <%-- <img src="../../Content/Untitled-1.jpg" />--%>
                     <%--HUVUD--%>
             <nav id="menu">
                     <%--MENY--%>

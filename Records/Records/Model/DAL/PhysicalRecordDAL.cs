@@ -31,14 +31,12 @@ namespace Records.Model.DAL
 
                     cmd.Parameters.Add("@Priceatpurchase", SqlDbType.Decimal).Value = physrecord.PriceAtPurchase;
                     cmd.Parameters.Add("@Dateofpurchase", SqlDbType.Date).Value = physrecord.DateofPurchase;
-                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = physrecord.RecordID;
-
-                    //cmd.Parameters.Add("@RecordID", SqlDbType.Int).Direction = ParameterDirection.Output;                  
+                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = physrecord.RecordID;                                     
                     
                     conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    //physrecord.PhysRecordID = (int)cmd.Parameters["@PhysRecordID"].Value;
+                   
 
 
                 }
@@ -70,7 +68,7 @@ namespace Records.Model.DAL
                 try
                 {
 
-                    SqlCommand cmd = new SqlCommand("appschema.usp_UpdatePhyscialRecord", conn);
+                    SqlCommand cmd = new SqlCommand("appschema.usp_UpdatePhysicalRecord", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     
                     

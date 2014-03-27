@@ -1,10 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Records.Master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="Records.Pages.RecordPages.Details" %>
 
-<%--<%@ Register Src="../Shared/DigitalRecordDetails.ascx" TagPrefix="uc" TagName="DigRecordDetails" %>--%>
-
-
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
 </asp:Content>
 
@@ -127,14 +122,20 @@
 
     </fieldset>
 
-    <br />
-                <asp:HyperLink ID="DeleteHyperLink" runat="server" Text="Ta bort"/>
+        <ul id="options">
+            <li>    <asp:HyperLink ID="DeleteHyperLink" runat="server" Text="Ta bort"/>             </li>
+            <li>    <asp:HyperLink ID="ReturnHyperLink" runat="server"  Text="Tillbaka"/>           </li>
+            <li>    <asp:HyperLink ID="EditHyperLink" runat="server" Text="Redigera" />             </li>
+            <li>    <asp:HyperLink ID="AddInfoHyperLink" runat="server" Text="Lägg till som {0}"/>  </li>    
            
-                <asp:HyperLink ID="ReturnHyperLink" runat="server"  Text="Tillbaka"/>
+                    
+        </ul>                
 
-                <asp:HyperLink ID="EditHyperLink" runat="server" Text="Redigera" />
+                
+                
+                
             </div>
-
+    
 </asp:Content>
 
 

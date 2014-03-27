@@ -1,4 +1,5 @@
-﻿using Records.Model.DAL;
+﻿using Records.Model;
+using Records.Model.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,12 @@ namespace Records.Pages.RecordPages
             DeleteHyperLink.NavigateUrl = GetRouteUrl("RecordDelete", new { id = Id });
             ReturnHyperLink.NavigateUrl = GetRouteUrl("Records", null);
             EditHyperLink.NavigateUrl = GetRouteUrl("EditRecord", new { id = Id });
+            AddInfoHyperLink.NavigateUrl = GetRouteUrl("AddInfo", new { id = Id });
+            Record record = Service.GetRecord(Id);
+
+            AddInfoHyperLink.Text = (record.RecordTypeID == 1) ? String.Format(AddInfoHyperLink.Text, "digital skiva") : String.Format(AddInfoHyperLink.Text, "fysisk skiva");
+          
+                        
 
             if (Session["SucessMessage"] != null)
             {

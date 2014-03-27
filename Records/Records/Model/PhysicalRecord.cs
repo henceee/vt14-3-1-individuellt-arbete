@@ -8,8 +8,7 @@ namespace Records.Model
 {
     public class PhysicalRecord
     {
-        //public int PhysRecordID { get; set; }
-
+        
         [Required(ErrorMessage = "Inköpspris måste anges")]
         public Decimal PriceAtPurchase  { get; set; }
         

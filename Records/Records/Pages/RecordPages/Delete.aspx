@@ -7,6 +7,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="contentdiv">
+    <div id="delete">
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
     <asp:Panel ID="ConfirmPanel" runat="server">
     <p> Är du säker på att du vill ta bort skivan <b> <%-- Namnet på skivan i literal nedan --%>
@@ -18,7 +19,7 @@
             OnCommand="DeleteLinkButton_Command" CommandArgument ='<%$ Routevalue:ID %>'/>
         <asp:HyperLink ID="CancelLinkButton" runat="server" Text="Avbryt"/>
     </div>
-
+    </div>
 </asp:Content>
 
 
