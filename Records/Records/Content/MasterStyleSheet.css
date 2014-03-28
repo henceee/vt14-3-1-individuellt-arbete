@@ -223,16 +223,26 @@ margin-bottom: 1%;
 
 fieldset {
 
-width: 50%;
 
+margin-left: 15%;
+width: 100px;
+padding: 0 50% 0 50%;
+
+}
+
+fieldset dd {
+    margin-left: -5px;
+    
 }
 
 #options {
 
     float: left;
-    margin-left: -6%;
+    margin-left: -4%;
     
 }
+
+/*options-raden i detaljer (redigera, ta bort, tillbaka, lägg till som...)*/
 
 #options li {
 
@@ -272,7 +282,7 @@ background: linear-gradient(to bottom, #d0e4f7 0%,#73b1e7 24%,#0a77d5 50%,#539fe
 
 /*marginal inom #content*/
 
-#contentdiv, #error {
+#contentdiv, #error{
 
 margin-left: 20%;
 

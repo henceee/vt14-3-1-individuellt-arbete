@@ -57,8 +57,10 @@
           
             <asp:TextBox ID="ReleaseDateTextBox" runat="server" Text='<%# BindItem.Releasedate%>' MaxLength="10"></asp:TextBox>
             <asp:RequiredFieldValidator runat="server" ControlToValidate="ReleaseDateTextBox" Text="*" ErrorMessage="Releasedatum måste anges!"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator runat="server" Text="*" ErrorMessage="Releasedatum måste kunna tolkas som ett giltigt datum." ControlToValidate="ReleaseDateTextBox"
-                ValidationExpression="^(19|20)\d\d([-/.])(0?[1-9]|1[012])\2(0?[1-9]|[12][0-9]|3[01])$"></asp:RegularExpressionValidator>
+             <asp:CompareValidator ID="CompareValidator1" runat="server"
+                 Text="*" ErrorMessage="Releasedatum måste kunna tolkas som ett giltigt datum."
+                 ControlToValidate="ReleaseDateTextBox" Operator="DataTypeCheck" Type="Date"/>  
+           
             
 
             <%-- Skivbolag--%>

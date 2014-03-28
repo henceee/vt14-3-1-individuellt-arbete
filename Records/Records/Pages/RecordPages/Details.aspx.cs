@@ -15,6 +15,7 @@ namespace Records.Pages.RecordPages
         #region fält
 
         Service _service;
+        Record _record;
 
         #endregion
 
@@ -24,7 +25,14 @@ namespace Records.Pages.RecordPages
 
             get { return _service ?? (_service = new Service()); }
         }
-      
+        
+        public Record Record {
+        
+            get {   return _record ?? (_record = new Record()); }
+            set { _record = value; }
+            
+        }
+
         public int Id
         {
 
@@ -47,9 +55,9 @@ namespace Records.Pages.RecordPages
             ReturnHyperLink.NavigateUrl = GetRouteUrl("Records", null);
             EditHyperLink.NavigateUrl = GetRouteUrl("EditRecord", new { id = Id });
             AddInfoHyperLink.NavigateUrl = GetRouteUrl("AddInfo", new { id = Id });
-            Record record = Service.GetRecord(Id);
+            Record = Service.GetRecord(Id);
 
-            AddInfoHyperLink.Text = (record.RecordTypeID == 1) ? String.Format(AddInfoHyperLink.Text, "digital skiva") : String.Format(AddInfoHyperLink.Text, "fysisk skiva");
+            AddInfoHyperLink.Text = (Record.RecordTypeID == 1) ? String.Format(AddInfoHyperLink.Text, "digital skiva") : String.Format(AddInfoHyperLink.Text, "fysisk skiva");
           
                         
 

@@ -10,6 +10,7 @@
             <p><asp:Literal ID="UppdateMessage" runat="server">Skivan {0}</asp:Literal></p>
         </asp:Panel>
 
+    
     <asp:FormView ID="FormView1" runat="server"
     ItemType="Records.Model.Record"
         DataKeyNames="RecordID"
@@ -54,8 +55,7 @@
         </ItemTemplate>
     </asp:FormView>
 
-    <fieldset>
-            <legend>Övriga uppgifter</legend>
+   
 
     <asp:FormView ID="FormView2" runat="server"
         ItemType="Records.Model.DigitalRecord"
@@ -64,7 +64,8 @@
 
         <ItemTemplate>
             
-            
+             <fieldset>
+            <legend>Digital Skiva</legend>
 
             <dd>
                 <b>Skivtyp:</b>
@@ -80,7 +81,7 @@
               
             </dd>
             
-            
+            </fieldset>
             
         </ItemTemplate>
   
@@ -94,7 +95,8 @@
         SelectMethod="FormView3_GetItem">
 
         <ItemTemplate>
-            
+             <fieldset>
+            <legend>Fysisk Skiva</legend>
              <dd>
                 <b>Skivtyp:</b>
             </dd>
@@ -115,12 +117,12 @@
                 <%#: Item.DateofPurchase.ToShortDateString() %>
                               
             </dd>            
-            
+            </fieldset>
         </ItemTemplate>
 
     </asp:FormView>
 
-    </fieldset>
+    
 
         <ul id="options">
             <li>    <asp:HyperLink ID="DeleteHyperLink" runat="server" Text="Ta bort"/>             </li>

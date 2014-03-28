@@ -51,8 +51,9 @@
           
             <asp:TextBox ID="ReleaseDateTextBox" runat="server" Text='<%# BindItem.Releasedate%>' MaxLength="10"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ReleaseDateTextBox" Text="*" ErrorMessage="Releasedatum måste anges!"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" Text="*" ErrorMessage="Releasedatum måste kunna tolkas som ett giltigt datum." ControlToValidate="ReleaseDateTextBox"
-                ValidationExpression="^(19|20)\d\d([-/.])(0?[1-9]|1[012])\2(0?[1-9]|[12][0-9]|3[01])$"></asp:RegularExpressionValidator>
+             <asp:CompareValidator ID="CompareValidator1" runat="server"
+                 Text="*" ErrorMessage="Releasedatum måste kunna tolkas som ett giltigt datum."
+                 ControlToValidate="ReleaseDateTextBox" Operator="DataTypeCheck" Type="Date"/>       
             
 
             <%-- Skivbolag--%>
@@ -82,9 +83,9 @@
              <asp:TextBox ID="PurchaseDateTextBox" runat="server"></asp:TextBox>
              <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="PurchaseDateTextBox" Text="*"
                  ErrorMessage=""></asp:RequiredFieldValidator>
-              <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" Text="*"
-                  ErrorMessage="Inköpsdatum måste kunna tolkas som ett giltigt datum." ControlToValidate="PurchaseDateTextBox"
-                ValidationExpression="^(19|20)\d\d([-/.])(0?[1-9]|1[012])\2(0?[1-9]|[12][0-9]|3[01])$"></asp:RegularExpressionValidator>
+             <asp:CompareValidator ID="CompareValidator2" runat="server"
+                 Text="*" ErrorMessage="Inköpsdatum måste kunna tolkas som ett giltigt datum."
+                 ControlToValidate="PurchaseDateTextBox" Operator="DataTypeCheck" Type="Date"/>       
 
               <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Insert" Text="Spara"/>
                           

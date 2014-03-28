@@ -40,8 +40,6 @@ namespace Records.Pages.RecordPages
 
   
 
-
-
         public void FormView2_InsertItem(Record record)
         {
             if (ModelState.IsValid)
