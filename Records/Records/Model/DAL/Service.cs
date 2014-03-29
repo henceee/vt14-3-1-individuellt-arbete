@@ -145,13 +145,13 @@ namespace Records.Model.DAL
         public void SaveDigitalRecord(DigitalRecord digrecord)
         {           
             
-            ICollection<ValidationResult> validationResults;
-            if(!digrecord.Validate(out validationResults)){
+            //ICollection<ValidationResult> validationResults;
+            //if(!digrecord.Validate(out validationResults)){
             
-             var ex = new ValidationException("Objektet klarade inte valideringen.");
-                ex.Data.Add("ValidationResults", validationResults);
-                throw ex;
-            }
+            // var ex = new ValidationException("Objektet klarade inte valideringen.");
+            //    ex.Data.Add("ValidationResults", validationResults);
+            //    throw ex;
+            //}
                          
                 DigitalRecordDAL.InsertDigitalRecord(digrecord);
           
@@ -169,17 +169,16 @@ namespace Records.Model.DAL
 
         public void UpdateDigitalRecord(DigitalRecord digrecord)
         {
+                       
 
-            //OBS VÄNTA TILL SIST MED NEDANSTÅENDE:
-
-            /*ICollection<ValidationResult> validationResults;
-            if(!customer.Validate(out validationResults){
+            ICollection<ValidationResult> validationResults;
+            if(!digrecord.Validate(out validationResults)){
             
              var ex = new ValidationException("Objektet klarade inte valideringen.");
                 ex.Data.Add("ValidationResults", validationResults);
                 throw ex;
             }
-             */
+             
 
             DigitalRecordDAL.UpdateDigitalRecord(digrecord);
         }
@@ -281,9 +280,14 @@ namespace Records.Model.DAL
                 else if (record.RecordTypeID == 2)
                 {
                     RecordDAL.InsertRecordTypeIDDigital(record);
+                
                 }
+                 
+                               
 
-                //RecordType får bara va antingen fysisk eller digital, så annars kastas ett undantag!
+                //RecordType får bara va antingen fysisk(1),digital(2) eller 'multi'(3, innebär att den finns som både fysisk och digital,
+                // se else satsen (Service - rad 300))
+                //..annars kastas undantag.
 
                 else
                 {
@@ -294,8 +298,14 @@ namespace Records.Model.DAL
             }
             else
             {
-
-                RecordDAL.UpdateRecord(record);
+                if (record.RecordTypeID == 3)
+                {
+                    RecordDAL.UpdateRecordTypeIDToMulti(record);
+                }
+                else
+                {
+                    RecordDAL.UpdateRecord(record);
+                }
             }
         }
 

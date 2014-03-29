@@ -85,6 +85,15 @@ namespace Records.Pages.RecordPages {
         protected global::System.Web.UI.WebControls.HyperLink EditHyperLink;
         
         /// <summary>
+        /// AddInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder AddInfo;
+        
+        /// <summary>
         /// AddInfoHyperLink control.
         /// </summary>
         /// <remarks>

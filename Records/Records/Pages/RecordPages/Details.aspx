@@ -128,8 +128,9 @@
             <li>    <asp:HyperLink ID="DeleteHyperLink" runat="server" Text="Ta bort"/>             </li>
             <li>    <asp:HyperLink ID="ReturnHyperLink" runat="server"  Text="Tillbaka"/>           </li>
             <li>    <asp:HyperLink ID="EditHyperLink" runat="server" Text="Redigera" />             </li>
+            <asp:PlaceHolder ID="AddInfo" runat="server">
             <li>    <asp:HyperLink ID="AddInfoHyperLink" runat="server" Text="Lägg till som {0}"/>  </li>    
-           
+           </asp:PlaceHolder>
                     
         </ul>                
 

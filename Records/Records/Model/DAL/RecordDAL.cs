@@ -324,7 +324,7 @@ namespace Records.Model.DAL
                 }
                 catch
                 {
-                    throw new ApplicationException("An error occured while getting customers from the database.");
+                    throw new ApplicationException("An error occured when updating record in the database.");
                 }
             }
         }
@@ -332,7 +332,31 @@ namespace Records.Model.DAL
         #endregion
 
 
+        #region InsertRecordTypeIDMulti
 
+        public void UpdateRecordTypeIDToMulti(Record record) 
+        {
+            using (var conn = CreateConnection())
+            {
+                try {
+
+                    SqlCommand cmd = new SqlCommand("appschema.usp_ChangeTypeIDToMulti", conn);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@RecordID", SqlDbType.Int).Value = record.RecordID;
+                    cmd.Parameters.Add("@RecordTypeID", SqlDbType.Int).Value = record.RecordTypeID;
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    throw new ApplicationException("An error occured while updating record in the database.");
+                }
+            
+            }
+        }
+        #endregion
 
 
 

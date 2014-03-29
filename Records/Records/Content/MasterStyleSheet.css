@@ -219,14 +219,13 @@ margin-bottom: 1%;
 
 }
 
-/*Fieldset på Details sidan*/
+/*Fieldset på Details och Redigera sidan*/
 
 fieldset {
 
 
-margin-left: 15%;
-width: 100px;
-padding: 0 50% 0 50%;
+margin-left: 20%;
+width: 200px;
 
 }
 

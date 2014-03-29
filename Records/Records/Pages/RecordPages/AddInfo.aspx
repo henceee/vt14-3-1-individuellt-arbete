@@ -53,7 +53,8 @@
 
      </asp:FormView>
         
-    
+                                  <%-- Digital --%>
+
     <asp:FormView ID="FormView1" runat="server"
         ItemType="Records.Model.DigitalRecord"
         DataKeyNames="RecordID"
@@ -62,7 +63,7 @@
         SelectMethod="FormView1_GetItem">
                
         <InsertItemTemplate>
-            <%-- Storlek --%>            
+                                  <%-- Storlek --%>            
 
             <fieldset>
             <legend>Digital Skiva</legend>
@@ -81,42 +82,48 @@
         
    </asp:FormView>
 
-        <asp:FormView ID="FormView6" runat="server"
+                   
+
+        <asp:FormView ID="FormView3" runat="server"
             ItemType="Records.Model.PhysicalRecord"
             DataKeyNames="RecordID"
-            SelectMethod="FormView6_GetItem"
-            InsertMethod="FormView6_InsertItem"
+            InsertMethod="FormView3_InsertItem"
             DefaultMode="Insert">
 
             <InsertItemTemplate>
-
-                 <%-- Inköpspris --%>
-
-             <asp:Label ID="Label6" runat="server" AssociatedControlID="PriceTextBox" Text="Inköpspris"></asp:Label>
-
-             <asp:TextBox ID="PriceTextBox" runat="server" MaxLength="6" Text='<%# BindItem.PriceAtPurchase %>'></asp:TextBox>
-
-             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="PriceTextBox" Text="*"
-                 ErrorMessage="Ange ett inköpspris"></asp:RequiredFieldValidator>
-             <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="PriceTextBox" Text="*"
-                 ErrorMessage="Ange inköpspriset som ett flytal med högst 4 tal följt av två decimaler" ValidationExpression="^[0-9]{1,4}[.][0-9]{2}$"></asp:RegularExpressionValidator>
             
-              <%-- Inköpsdatum --%>
+                <fieldset>
+                <label> Fysisk skiva</label> <br /><br />
+                    
+                            <%-- Inköpspris --%>
 
-             <asp:Label ID="Label7" runat="server" AssociatedControlID="PurchaseDateTextBox" Text="Inköpsdatum"></asp:Label>
+            <asp:Label ID="Label6" runat="server" AssociatedControlID="PriceTextBox" Text="Inköpspris"></asp:Label> <br />
 
-             <asp:TextBox ID="PurchaseDateTextBox" runat="server" Text='<%# BindItem.DateofPurchase %>'></asp:TextBox>
-             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="PurchaseDateTextBox" Text="*"
-                 ErrorMessage=""></asp:RequiredFieldValidator>
-             <asp:CompareValidator ID="CompareValidator2" runat="server"
-                 Text="*" ErrorMessage="Inköpsdatum måste kunna tolkas som ett giltigt datum."
-                 ControlToValidate="PurchaseDateTextBox" Operator="DataTypeCheck" Type="Date"/>       
+            <asp:TextBox ID="PriceTextBox" runat="server" MaxLength="6"></asp:TextBox>
 
-              <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Insert" Text="Spara"/>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="PriceTextBox" Text="*"
+                ErrorMessage="Ange ett inköpspris"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="PriceTextBox" Text="*"
+                ErrorMessage="Ange inköpspriset som ett flytal med högst 4 tal följt av två decimaler" ValidationExpression="^[0-9]{1,4}[.][0-9]{2}$"></asp:RegularExpressionValidator>
+            
+                            <%-- Inköpsdatum --%>
 
-            </InsertItemTemplate>
+            <asp:Label ID="Label7" runat="server" AssociatedControlID="PurchaseDateTextBox" Text="Inköpsdatum"></asp:Label>
+
+            <asp:TextBox ID="PurchaseDateTextBox" runat="server" Text='<%# BindItem.DateofPurchase %>'></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="PurchaseDateTextBox" Text="*"
+                ErrorMessage=""></asp:RequiredFieldValidator>
+            <asp:CompareValidator ID="CompareValidator2" runat="server"
+                Text="*" ErrorMessage="Inköpsdatum måste kunna tolkas som ett giltigt datum."
+                ControlToValidate="PurchaseDateTextBox" Operator="DataTypeCheck" Type="Date"/>       
+
+            <asp:LinkButton ID="LinkButton2" runat="server" CommandName="Insert" Text="Spara"/>
+                </fieldset>
+        </InsertItemTemplate>
 
         </asp:FormView>
+
+    
         
         
   </div>

@@ -51,11 +51,21 @@ namespace Records.Pages.RecordPages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             DeleteHyperLink.NavigateUrl = GetRouteUrl("RecordDelete", new { id = Id });
             ReturnHyperLink.NavigateUrl = GetRouteUrl("Records", null);
             EditHyperLink.NavigateUrl = GetRouteUrl("EditRecord", new { id = Id });
             AddInfoHyperLink.NavigateUrl = GetRouteUrl("AddInfo", new { id = Id });
             Record = Service.GetRecord(Id);
+
+            //Är skivtypID multi så finns skivan både som fysisk och digital - då ska inte fältet för att "lägga till som.." renderas ut
+
+            if (Record.RecordTypeID == 3) {
+
+                AddInfo.Visible = false;
+            }
+
+            //texten till hyperlänken "lägg till som" ändras dynamiskt beroende på skivtypID
 
             AddInfoHyperLink.Text = (Record.RecordTypeID == 1) ? String.Format(AddInfoHyperLink.Text, "digital skiva") : String.Format(AddInfoHyperLink.Text, "fysisk skiva");
           

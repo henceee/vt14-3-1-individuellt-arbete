@@ -2,6 +2,7 @@
 using Records.Model.DAL;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.ModelBinding;
@@ -48,14 +49,21 @@ namespace Records.Pages.RecordPages
         protected void Page_Load(object sender, EventArgs e)
         {
             Record = Service.GetRecord(Id);
+                    
+            //Om det är en fysisk skiva => lägga till som digital.
+            if (Record.RecordTypeID == 1)
+            {
 
-            FormView1.Visible = (Record.RecordTypeID == 1) ? true : false;
+                AddInfoHeaderLiteral.Text = "Lägg till som digital skiva";
+                FormView1.Visible = true;
+                FormView3.Visible = false;
 
-            if (Record.RecordTypeID == 1) {
-
-                AddInfoHeaderLiteral.Text = "Lägg till som digital skiva";               
+            }
+            else {
+                FormView1.Visible = false;
             }
         }
+
 
         #region Insert Digital Skiva
 
@@ -73,9 +81,10 @@ namespace Records.Pages.RecordPages
 
                     //TODO: Fixa till i Service för hantering av multi
 
-                    //Record.RecordTypeID = 3;
+                    //RecordTypeID 3 är 'multi', både som fysisk och digital
+                    Record.RecordTypeID = 3;
 
-                    //Service.SaveRecord(Record);
+                    Service.SaveRecord(Record);
 
                     Response.RedirectToRoute("RecordDetails", new { id = digrecord.RecordID });
 
@@ -125,17 +134,13 @@ namespace Records.Pages.RecordPages
         }
         #endregion
 
-        // The id parameter should match the DataKeyNames value set on the control
-        // or be decorated with a value provider attribute, e.g. [QueryString]int id
-        public Records.Model.PhysicalRecord FormView6_GetItem([RouteData]int id)
-        {
-            return Service.GetPhysicalRecordByRecordID(id);
-        }
 
-
-        //TODO: Undersök varför inte InsertItem för fysisk skiva anropas.
-        public void FormView6_InsertItem(PhysicalRecord physrecord)
+        #region InsertMetod Fysisk Skiva
+        
+        
+        public void FormView3_InsertItem(PhysicalRecord physrecord)
         {
+           
             if (ModelState.IsValid)
             {
                 try
@@ -143,13 +148,19 @@ namespace Records.Pages.RecordPages
 
                     physrecord.RecordID = Id;
 
+                    var pricevalue = ((TextBox)FormView3.FindControl("PriceTextBox")).Text;
+                    //TODO fixa så det funkar utan InvariantCulture
+                    var Price = decimal.Parse(pricevalue, CultureInfo.InvariantCulture);
+                    physrecord.PriceAtPurchase = Price;
+
                     Service.SavePhysicalRecord(physrecord);
+                    
+                    //TODO: Fixa till i Service för hantering av multi                   
 
-                    //TODO: Fixa till i Service för hantering av multi
+                    //RecordTypeID 3 är 'multi', både som fysisk och digital
+                    Record.RecordTypeID = 3;
 
-                    //Record.RecordTypeID = 3;
-
-                    //Service.SaveRecord(Record);
+                    Service.SaveRecord(Record);
 
                     Response.RedirectToRoute("RecordDetails", new { id = physrecord.RecordID });
 
@@ -162,6 +173,8 @@ namespace Records.Pages.RecordPages
 
             }
         }
+        #endregion
+        
 
      
 

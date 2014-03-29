@@ -70,8 +70,7 @@
 
     </asp:FormView>
 
-    <fieldset>
-            <legend>Övriga Uppgifter</legend>
+
 
         <asp:FormView ID="FormView2" runat="server"
         ItemType="Records.Model.DigitalRecord"
@@ -82,6 +81,8 @@
 
         <ItemTemplate>         
             
+            <fieldset>
+                <legend> Digital Skiva</legend>
 
             <dd>
                 <b>Skivtyp:</b>
@@ -115,6 +116,8 @@
                 ValidationExpression='^[1-9][0-9]?[0-9]?\s?[a-z]{2}$'></asp:RegularExpressionValidator> 
 
             <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Update" Text="Spara" CausesValidation="false" />
+
+            </fieldset>
         </EditItemTemplate>
            
             
@@ -128,9 +131,11 @@
         UpdateMethod="FormView3_UpdateItem"
         SelectMethod="FormView3_GetItem">
 
-            <ItemTemplate>
+          <ItemTemplate>
+               <fieldset>
+                <legend> Fysisk Skiva</legend>
 
-                 <dd>
+             <dd>
                 <b>Skivtyp:</b>
             </dd>
             <dd>
@@ -152,6 +157,8 @@
             </dd>            
 
                 <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Edit" Text="Redigera"/>
+            
+            </fieldset>
             </ItemTemplate>
 
             <EditItemTemplate>
@@ -185,6 +192,6 @@
         </asp:FormView>
         
 
-    </fieldset>
+  
     </div>
 </asp:Content>
