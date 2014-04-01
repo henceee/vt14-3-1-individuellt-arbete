@@ -331,6 +331,12 @@ namespace Records.Model.DAL
 
         #endregion
 
+        /// <summary>
+        /// InsertRecordTypeIDMulti
+        /// Uppdaterar skivans TypID till 3 -"multi" i tabellen skiva
+        /// med hjälp av informationen i refenerensen till ett Record obj.
+        /// </summary>
+        /// <param name="record"></param>
 
         #region InsertRecordTypeIDMulti
 

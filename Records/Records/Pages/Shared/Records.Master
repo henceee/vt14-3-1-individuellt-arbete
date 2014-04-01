@@ -15,7 +15,7 @@
     <div>
         <header>
            <div id="headerpic"></div>
-           <%-- <img src="../../Content/Untitled-1.jpg" />--%>
+           
                     <%--HUVUD--%>
             <nav id="menu">
                     <%--MENY--%>
