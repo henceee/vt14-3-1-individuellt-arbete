@@ -73,10 +73,9 @@
 
              <asp:RequiredFieldValidator runat="server" ControlToValidate="PriceTextBox" Text="*"
                  ErrorMessage="Ange ett inköpspris"></asp:RequiredFieldValidator>
-             <asp:RegularExpressionValidator runat="server" ControlToValidate="PriceTextBox" Text="*"
-                 ErrorMessage="Ange inköpspriset som ett flytal med högst 4 tal följt av två decimaler" ValidationExpression="^[0-9]{1,4}[.][0-9]{2}$"></asp:RegularExpressionValidator>
-            
-              <%-- Inköpsdatum --%>
+             <asp:CompareValidator ControlToValidate="PriceTextBox"           
+              Operator="DataTypeCheck" Type="Double" />
+                 <%-- Inköpsdatum --%>
 
              <asp:Label ID="Label7" runat="server" AssociatedControlID="PurchaseDateTextBox" Text="Inköpsdatum"></asp:Label>
 

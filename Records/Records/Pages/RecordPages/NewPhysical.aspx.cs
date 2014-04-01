@@ -49,7 +49,8 @@ namespace Records.Pages.RecordPages
                     var pricevalue = ((TextBox)FormView1.FindControl("PriceTextBox")).Text;
 
                     //TODO fixa så det funkar utan InvariantCulture
-                    var Price = decimal.Parse(pricevalue, CultureInfo.InvariantCulture);
+                    //CultureInfo.InvariantCulture
+                    var Price = decimal.Parse(pricevalue);
                     var Purchasedate = DateTime.Parse(((TextBox)FormView1.FindControl("PurchaseDateTextBox")).Text);
                     
                     var physrecord = new PhysicalRecord

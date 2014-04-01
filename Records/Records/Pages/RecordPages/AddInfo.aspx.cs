@@ -79,7 +79,6 @@ namespace Records.Pages.RecordPages
 
                     Service.SaveDigitalRecord(digrecord);
 
-                    //TODO: Fixa till i Service för hantering av multi
 
                     //RecordTypeID 3 är 'multi', både som fysisk och digital
                     Record.RecordTypeID = 3;
@@ -155,7 +154,7 @@ namespace Records.Pages.RecordPages
 
                     Service.SavePhysicalRecord(physrecord);
                     
-                    //TODO: Fixa till i Service för hantering av multi                   
+                                    
 
                     //RecordTypeID 3 är 'multi', både som fysisk och digital
                     Record.RecordTypeID = 3;
